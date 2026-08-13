@@ -1,115 +1,991 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เลือกสายอาชีพ</title>
-    <link rel="stylesheet" href="style.css">
+
+    <title>เลือกสายอาชีพ | Career Path</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, "Noto Sans Thai", sans-serif;
+            background: #f5f6fb;
+            color: #1f2937;
+        }
+
+        /* =========================
+           LAYOUT
+        ========================= */
+
+        .app {
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            width: 250px;
+            background: white;
+            border-right: 1px solid #e5e7eb;
+            min-height: 100vh;
+            padding: 22px 15px;
+
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .logo {
+            padding: 5px 10px 25px;
+        }
+
+        .logo-title {
+            color: #4f46e5;
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .logo-subtitle {
+            color: #94a3b8;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .dashboard {
+            width: 100%;
+            border: none;
+            background: #f0efff;
+            color: #4f46e5;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: left;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 22px;
+        }
+
+        .section-title {
+            font-size: 10px;
+            color: #94a3b8;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 0 10px 8px;
+        }
+
+        .menu {
+            width: 100%;
+            border: none;
+            background: transparent;
+            color: #64748b;
+            padding: 10px;
+            border-radius: 9px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 13px;
+            margin-bottom: 3px;
+        }
+
+        .menu:hover {
+            background: #f5f3ff;
+            color: #4f46e5;
+        }
+
+        .menu.active {
+            background: #efedff;
+            color: #4f46e5;
+            font-weight: bold;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            min-height: 100vh;
+        }
+
+        /* =========================
+           TOPBAR
+        ========================= */
+
+        .topbar {
+            height: 68px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            padding: 0 30px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e9e7ff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+        }
+
+        .name {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .role {
+            font-size: 11px;
+            color: #94a3b8;
+            margin-top: 3px;
+        }
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+            padding: 30px;
+        }
+
+        .back {
+            border: 1px solid #e5e7eb;
+            background: white;
+            color: #4f46e5;
+
+            padding: 10px 16px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            margin-bottom: 25px;
+        }
+
+        .back:hover {
+            background: #efedff;
+        }
+
+        .title h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .title p {
+            color: #64748b;
+            margin-top: 8px;
+            margin-bottom: 28px;
+        }
+
+        /* =========================
+           CAREER GRID
+        ========================= */
+
+        .career-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .career-card {
+
+            background: white;
+
+            border:
+                1px solid #e5e7eb;
+
+            border-radius: 15px;
+
+            padding: 25px 20px;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            min-height: 245px;
+        }
+
+        .career-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #6366f1;
+
+            box-shadow:
+                0 12px 30px
+                rgba(79,70,229,0.12);
+        }
+
+        .career-icon {
+
+            width: 80px;
+            height: 80px;
+
+            margin:
+                0 auto 18px;
+
+            border-radius: 20px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 42px;
+
+            background: #f0efff;
+        }
+
+        .career-card h2 {
+
+            font-size: 17px;
+
+            margin:
+                0 0 8px;
+        }
+
+        .career-card p {
+
+            color: #64748b;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            margin: 0;
+        }
+
+        .select-button {
+
+            margin-top: 18px;
+
+            width: 100%;
+
+            border: none;
+
+            background: #4f46e5;
+
+            color: white;
+
+            padding: 10px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .select-button:hover {
+
+            background: #4338ca;
+        }
+
+        /* =========================
+           INFO
+        ========================= */
+
+        .info {
+
+            margin-top: 25px;
+
+            background: #efedff;
+
+            border-radius: 13px;
+
+            padding: 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .info-icon {
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            background: #ddd9ff;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+        }
+
+        .info h3 {
+
+            margin: 0 0 5px;
+
+            font-size: 14px;
+        }
+
+        .info p {
+
+            margin: 0;
+
+            font-size: 12px;
+
+            color: #64748b;
+        }
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        .toast {
+
+            position: fixed;
+
+            bottom: 25px;
+            right: 25px;
+
+            background: #1f2937;
+
+            color: white;
+
+            padding: 13px 18px;
+
+            border-radius: 9px;
+
+            display: none;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 1000px) {
+
+            .career-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 650px) {
+
+            .sidebar {
+
+                display: none;
+            }
+
+            .main {
+
+                margin-left: 0;
+
+                width: 100%;
+            }
+
+            .career-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+
+                padding: 20px;
+            }
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<div class="page">
 
-    <header class="top-header">
-
-        <div>
-            <h1>เลือกสายอาชีพ</h1>
-            <p>เลือกสายอาชีพที่คุณสนใจเพื่อเริ่มต้นเส้นทางอาชีพ</p>
-        </div>
-
-        <div class="step-badge">
-            ขั้นตอนที่ 1 / 6
-        </div>
-
-    </header>
+<div class="app">
 
 
-    <div class="career-banner">
+    <!-- =========================
+         SIDEBAR
+    ========================= -->
 
-        <div class="banner-icon">🧭</div>
-
-        <div>
-            <h2>ค้นหาสายอาชีพที่เหมาะกับคุณ</h2>
-            <p>
-                สำรวจสายงานต่าง ๆ และเลือกอาชีพที่ตรงกับความสนใจ
-                และเป้าหมายของคุณ
-            </p>
-        </div>
-
-    </div>
+    <aside class="sidebar">
 
 
-    <h2 class="section-title">สายอาชีพยอดนิยม</h2>
+        <div class="logo">
 
+            <div class="logo-title">
+                prototype ระบบเส้นทางอาชีพ
+            </div>
 
-    <div class="career-grid">
+            <div class="logo-subtitle">
+                และการพัฒนาทักษะ
+            </div>
 
-        <div class="career-option">
-            <div class="big-icon">💻</div>
-            <h3>นักพัฒนาซอฟต์แวร์</h3>
-            <p>Software Developer</p>
-            <div class="tag">เทคโนโลยี</div>
         </div>
 
 
-        <div class="career-option">
-            <div class="big-icon">📊</div>
-            <h3>นักวิเคราะห์ข้อมูล</h3>
-            <p>Data Analyst</p>
-            <div class="tag">Data</div>
+        <button
+            class="dashboard"
+            onclick="goDashboard()">
+
+            🏠 DASHBOARD
+
+        </button>
+
+
+        <div class="section-title">
+            MAIN MENU
         </div>
 
 
-        <div class="career-option">
-            <div class="big-icon">🎨</div>
-            <h3>นักออกแบบ UX/UI</h3>
-            <p>UX/UI Designer</p>
-            <div class="tag">Design</div>
+        <button
+            class="menu active">
+
+            🧭
+            เลือกสายอาชีพ
+
+        </button>
+
+
+        <button
+            class="menu"
+            onclick="goLearning()">
+
+            💡
+            เรียนรู้สายอาชีพ
+
+        </button>
+
+
+        <button
+            class="menu">
+
+            🏆
+            Certificate
+
+        </button>
+
+
+        <button
+            class="menu">
+
+            🧠
+            ทดสอบพฤติกรรม
+
+        </button>
+
+
+        <button
+            class="menu">
+
+            🗺️
+            Career Path
+
+        </button>
+
+
+        <button
+            class="menu">
+
+            💼
+            ตำแหน่งงานที่เหมาะสม
+
+        </button>
+
+
+        <br>
+
+
+        <div class="section-title">
+            OTHER
         </div>
 
 
-        <div class="career-option">
-            <div class="big-icon">📱</div>
-            <h3>นักพัฒนาแอปพลิเคชัน</h3>
-            <p>Mobile Developer</p>
-            <div class="tag">เทคโนโลยี</div>
+        <button class="menu">
+            🔮 ดูดวง
+        </button>
+
+        <button class="menu">
+            🌐 ข้อมูลสายงานทั่วโลก
+        </button>
+
+        <button class="menu">
+            🏛️ สถาบันรับรอง/ฝึกอบรม
+        </button>
+
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="main">
+
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div class="profile">
+
+                <div class="avatar">
+                    👨🏻
+                </div>
+
+                <div>
+
+                    <div class="name">
+                        สวัสดี, พัชรพล
+                    </div>
+
+                    <div class="role">
+                        พนักงานทั่วไป
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
 
-        <div class="career-option">
-            <div class="big-icon">📢</div>
-            <h3>นักการตลาดดิจิทัล</h3>
-            <p>Digital Marketing</p>
-            <div class="tag">Marketing</div>
+        <!-- CONTENT -->
+
+        <div class="content">
+
+
+            <button
+                class="back"
+                onclick="goDashboard()">
+
+                ← กลับ Dashboard
+
+            </button>
+
+
+            <div class="title">
+
+                <h1>
+                    เลือกสายอาชีพ
+                </h1>
+
+                <p>
+                    เลือกสายอาชีพที่คุณสนใจ
+                    เพื่อสร้างเส้นทางการพัฒนาทักษะของคุณ
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+                 CAREER OPTIONS
+            ========================= -->
+
+            <div class="career-grid">
+
+
+                <!-- PROGRAMMER -->
+
+                <div
+                    class="career-card"
+                    onclick="selectCareer('Programmer')">
+
+                    <div class="career-icon">
+                        👨‍💻
+                    </div>
+
+                    <h2>
+                        Programmer
+                    </h2>
+
+                    <p>
+                        นักพัฒนาโปรแกรม
+                        สร้างและพัฒนาซอฟต์แวร์
+                        รวมถึงระบบต่าง ๆ
+                    </p>
+
+                    <button
+                        class="select-button">
+
+                        เลือกสายอาชีพ
+
+                    </button>
+
+                </div>
+
+
+                <!-- WEB -->
+
+                <div
+                    class="career-card"
+                    onclick="selectCareer('Web Developer')">
+
+                    <div class="career-icon">
+                        🌐
+                    </div>
+
+                    <h2>
+                        Web Developer
+                    </h2>
+
+                    <p>
+                        นักพัฒนาเว็บไซต์
+                        ออกแบบและพัฒนาเว็บไซต์
+                        และ Web Application
+                    </p>
+
+                    <button
+                        class="select-button">
+
+                        เลือกสายอาชีพ
+
+                    </button>
+
+                </div>
+
+
+                <!-- DATA -->
+
+                <div
+                    class="career-card"
+                    onclick="selectCareer('Data Analyst')">
+
+                    <div class="career-icon">
+                        📊
+                    </div>
+
+                    <h2>
+                        Data Analyst
+                    </h2>
+
+                    <p>
+                        นักวิเคราะห์ข้อมูล
+                        วิเคราะห์ข้อมูลเพื่อสนับสนุน
+                        การตัดสินใจ
+                    </p>
+
+                    <button
+                        class="select-button">
+
+                        เลือกสายอาชีพ
+
+                    </button>
+
+                </div>
+
+
+                <!-- UX UI -->
+
+                <div
+                    class="career-card"
+                    onclick="selectCareer('UX/UI Designer')">
+
+                    <div class="career-icon">
+                        🎨
+                    </div>
+
+                    <h2>
+                        UX/UI Designer
+                    </h2>
+
+                    <p>
+                        นักออกแบบประสบการณ์ผู้ใช้
+                        และส่วนติดต่อผู้ใช้งาน
+                    </p>
+
+                    <button
+                        class="select-button">
+
+                        เลือกสายอาชีพ
+
+                    </button>
+
+                </div>
+
+
+                <!-- SOFTWARE -->
+
+                <div
+                    class="career-card"
+                    onclick="selectCareer('Software Engineer')">
+
+                    <div class="career-icon">
+                        ⚙️
+                    </div>
+
+                    <h2>
+                        Software Engineer
+                    </h2>
+
+                    <p>
+                        วิศวกรซอฟต์แวร์
+                        ออกแบบและพัฒนาระบบ
+                        ขนาดใหญ่
+                    </p>
+
+                    <button
+                        class="select-button">
+
+                        เลือกสายอาชีพ
+
+                    </button>
+
+                </div>
+
+
+                <!-- AI -->
+
+                <div
+                    class="career-card"
+                    onclick="selectCareer('AI Developer')">
+
+                    <div class="career-icon">
+                        🤖
+                    </div>
+
+                    <h2>
+                        AI Developer
+                    </h2>
+
+                    <p>
+                        นักพัฒนา AI
+                        และระบบปัญญาประดิษฐ์
+                    </p>
+
+                    <button
+                        class="select-button">
+
+                        เลือกสายอาชีพ
+
+                    </button>
+
+                </div>
+
+
+                <!-- CYBER -->
+
+                <div
+                    class="career-card"
+                    onclick="selectCareer('Cyber Security')">
+
+                    <div class="career-icon">
+                        🔐
+                    </div>
+
+                    <h2>
+                        Cyber Security
+                    </h2>
+
+                    <p>
+                        ผู้เชี่ยวชาญด้านความปลอดภัย
+                        ของระบบสารสนเทศ
+                    </p>
+
+                    <button
+                        class="select-button">
+
+                        เลือกสายอาชีพ
+
+                    </button>
+
+                </div>
+
+
+                <!-- CLOUD -->
+
+                <div
+                    class="career-card"
+                    onclick="selectCareer('Cloud Engineer')">
+
+                    <div class="career-icon">
+                        ☁️
+                    </div>
+
+                    <h2>
+                        Cloud Engineer
+                    </h2>
+
+                    <p>
+                        ออกแบบและดูแลระบบ
+                        Cloud Infrastructure
+                    </p>
+
+                    <button
+                        class="select-button">
+
+                        เลือกสายอาชีพ
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- INFO -->
+
+            <div class="info">
+
+                <div class="info-icon">
+                    💡
+                </div>
+
+                <div>
+
+                    <h3>
+                        เลือกสายอาชีพที่คุณสนใจ
+                    </h3>
+
+                    <p>
+                        ระบบจะนำสายอาชีพที่คุณเลือก
+                        ไปสร้างเส้นทางการเรียนรู้
+                        การทดสอบ Certificate
+                        และ Career Path ต่อไป
+                    </p>
+
+                </div>
+
+            </div>
+
+
         </div>
 
 
-        <div class="career-option">
-            <div class="big-icon">💼</div>
-            <h3>ผู้จัดการโครงการ</h3>
-            <p>Project Manager</p>
-            <div class="tag">Management</div>
-        </div>
+    </main>
 
-    </div>
-
-
-    <div class="info-box">
-
-        <div class="info-icon">💡</div>
-
-        <div>
-            <h3>เลือกอาชีพที่คุณสนใจ</h3>
-            <p>
-                คุณสามารถสำรวจรายละเอียดของแต่ละสายอาชีพ
-                เพื่อดูทักษะ ความรู้ และโอกาสในการเติบโต
-            </p>
-        </div>
-
-    </div>
 
 </div>
 
+
+<!-- TOAST -->
+
+<div
+    id="toast"
+    class="toast">
+</div>
+
+
+<script>
+
+
+/* =========================
+   SELECT CAREER
+========================= */
+
+function selectCareer(career) {
+
+
+    showToast(
+        "เลือกสายอาชีพ: " + career
+    );
+
+
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+function goDashboard() {
+
+    window.location.href =
+        "index.html";
+
+}
+
+
+/* =========================
+   NEXT MENU
+========================= */
+
+function goLearning() {
+
+    window.location.href =
+        "learning.html";
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function showToast(message) {
+
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.innerText =
+        message;
+
+
+    toast.style.display =
+        "block";
+
+
+    clearTimeout(
+        window.toastTimer
+    );
+
+
+    window.toastTimer =
+        setTimeout(
+            function() {
+
+                toast.style.display =
+                    "none";
+
+            },
+            2500
+        );
+
+}
+
+
+</script>
+
+
 </body>
+
 </html>
