@@ -1,403 +1,3334 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>เส้นทางอาชีพ | Career Path</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="style.css">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+Career Path Dashboard
+</title>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        "Noto Sans Thai",
+        sans-serif;
+
+    background: #f5f6fb;
+
+    color: #1f2937;
+}
+
+button {
+
+    font-family: inherit;
+
+}
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+.app {
+
+    min-height: 100vh;
+
+    display: flex;
+
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+
+    width: 250px;
+
+    min-height: 100vh;
+
+    background: white;
+
+    border-right:
+        1px solid #e5e7eb;
+
+    padding: 22px 15px;
+
+    position: fixed;
+
+    left: 0;
+
+    top: 0;
+
+    bottom: 0;
+
+    overflow-y: auto;
+
+}
+
+.logo {
+
+    padding:
+        5px 10px 25px;
+
+}
+
+.logo-title {
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    color: #4338ca;
+
+}
+
+.logo-subtitle {
+
+    font-size: 12px;
+
+    color: #64748b;
+
+    margin-top: 4px;
+
+}
+
+
+/* Sidebar Dashboard */
+
+.dashboard-menu {
+
+    width: 100%;
+
+    border: none;
+
+    background: #f0efff;
+
+    color: #4f46e5;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    text-align: left;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    margin-bottom: 22px;
+
+}
+
+
+/* Section */
+
+.menu-section {
+
+    margin-bottom: 25px;
+
+}
+
+.menu-section-title {
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    color: #94a3b8;
+
+    letter-spacing: 1px;
+
+    padding:
+        0 10px 8px;
+
+}
+
+
+/* Menu */
+
+.menu-item {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #64748b;
+
+    padding: 10px;
+
+    border-radius: 9px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    margin-bottom: 3px;
+
+    transition: .2s;
+
+}
+
+.menu-item:hover {
+
+    background: #f8f7ff;
+
+    color: #4f46e5;
+
+}
+
+.menu-item.active {
+
+    background: #efedff;
+
+    color: #4f46e5;
+
+    font-weight: 700;
+
+}
+
+.menu-icon {
+
+    width: 22px;
+
+    text-align: center;
+
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main {
+
+    margin-left: 250px;
+
+    width: calc(100% - 250px);
+
+    min-height: 100vh;
+
+}
+
+
+/* =====================================================
+   TOPBAR
+===================================================== */
+
+.topbar {
+
+    height: 68px;
+
+    background: white;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    padding:
+        0 30px;
+
+    gap: 20px;
+
+}
+
+.notification {
+
+    position: relative;
+
+}
+
+.notification button {
+
+    border: none;
+
+    background: #f8fafc;
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+}
+
+.notification-count {
+
+    position: absolute;
+
+    top: -3px;
+
+    right: -3px;
+
+    background: #ef4444;
+
+    color: white;
+
+    width: 17px;
+
+    height: 17px;
+
+    border-radius: 50%;
+
+    font-size: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+.profile-avatar {
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #e9e7ff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 19px;
+
+}
+
+.profile-name {
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+.profile-role {
+
+    font-size: 11px;
+
+    color: #94a3b8;
+
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.page {
+
+    padding: 30px;
+
+}
+
+.page-header {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+}
+
+.page-header h1 {
+
+    margin: 0;
+
+    font-size: 27px;
+
+}
+
+.page-header p {
+
+    margin: 7px 0 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+}
+
+.history-button {
+
+    border:
+        1px solid #e5e7eb;
+
+    background: white;
+
+    padding:
+        10px 16px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    color: #64748b;
+
+}
+
+
+/* =====================================================
+   STAT CARDS
+===================================================== */
+
+.stat-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+}
+
+.stat-card {
+
+    background: white;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 13px;
+
+    padding: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+.stat-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 11px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 21px;
+
+}
+
+.stat-number {
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+}
+
+.stat-label {
+
+    font-size: 12px;
+
+    color: #64748b;
+
+    margin-top: 3px;
+
+}
+
+
+/* =====================================================
+   CAREER CARDS
+===================================================== */
+
+.panel {
+
+    background: white;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 15px;
+
+    padding: 22px;
+
+}
+
+.panel-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    margin-bottom: 22px;
+
+}
+
+.panel-title {
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+}
+
+.progress-summary {
+
+    font-size: 13px;
+
+    color: #64748b;
+
+}
+
+.career-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+}
+
+.career-card {
+
+    min-height: 260px;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    padding: 19px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s,
+        box-shadow .2s,
+        border .2s;
+
+    background: white;
+
+}
+
+.career-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color: #9b92ff;
+
+    box-shadow:
+        0 12px 30px
+        rgba(79,70,229,.10);
+
+}
+
+.career-card h3 {
+
+    margin: 0;
+
+    font-size: 16px;
+
+    line-height: 1.45;
+
+}
+
+.career-card p {
+
+    font-size: 12px;
+
+    color: #64748b;
+
+    line-height: 1.6;
+
+}
+
+.illustration {
+
+    height: 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 55px;
+
+    margin-top: 10px;
+
+}
+
+.status {
+
+    position: absolute;
+
+    bottom: 15px;
+
+    left: 17px;
+
+    right: 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+.status-icon {
+
+    width: 28px;
+
+    height: 28px;
+
+    border-radius: 50%;
+
+    background: #dcfce7;
+
+    color: #16a34a;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: 800;
+
+}
+
+.status strong {
+
+    display: block;
+
+    font-size: 12px;
+
+}
+
+.status small {
+
+    color: #94a3b8;
+
+    font-size: 10px;
+
+}
+
+.progress-circle {
+
+    width: 28px;
+
+    height: 28px;
+
+    border-radius: 50%;
+
+    border:
+        4px solid #e0e7ff;
+
+    border-top-color:
+        #6366f1;
+
+}
+
+.empty-circle {
+
+    width: 28px;
+
+    height: 28px;
+
+    border:
+        2px solid #d1d5db;
+
+    border-radius: 50%;
+
+}
+
+
+/* =====================================================
+   INFO BAR
+===================================================== */
+
+.info-bar {
+
+    margin-top: 18px;
+
+    background: #f0efff;
+
+    border-radius: 13px;
+
+    padding: 18px;
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+}
+
+.info-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #ddd9ff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.info-bar h3 {
+
+    margin: 0 0 4px;
+
+    font-size: 14px;
+
+}
+
+.info-bar p {
+
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+}
+
+
+/* =====================================================
+   SUB PAGE
+===================================================== */
+
+.sub-page {
+
+    display: none;
+
+}
+
+.sub-page.active {
+
+    display: block;
+
+}
+
+.back-button {
+
+    border:
+        1px solid #e5e7eb;
+
+    background: white;
+
+    color: #4f46e5;
+
+    padding:
+        10px 17px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    margin-bottom: 22px;
+
+    font-weight: 700;
+
+}
+
+.back-button:hover {
+
+    background: #efedff;
+
+}
+
+
+/* =====================================================
+   SUB PAGE HEADER
+===================================================== */
+
+.sub-header {
+
+    margin-bottom: 25px;
+
+}
+
+.sub-header h1 {
+
+    margin: 0;
+
+    font-size: 28px;
+
+}
+
+.sub-header p {
+
+    color: #64748b;
+
+    margin-top: 7px;
+
+}
+
+
+/* =====================================================
+   CAREER SELECT
+===================================================== */
+
+.career-options {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+}
+
+.career-option {
+
+    border:
+        1px solid #e5e7eb;
+
+    background: white;
+
+    border-radius: 15px;
+
+    padding: 28px 20px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+.career-option:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color: #6366f1;
+
+}
+
+.option-icon {
+
+    font-size: 48px;
+
+    margin-bottom: 12px;
+
+}
+
+.career-option h3 {
+
+    margin: 0;
+
+    font-size: 16px;
+
+}
+
+.career-option p {
+
+    color: #64748b;
+
+    font-size: 12px;
+
+}
+
+
+/* =====================================================
+   LEARNING
+===================================================== */
+
+.lesson-tabs {
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+
+}
+
+.lesson-tab {
+
+    border:
+        1px solid #e5e7eb;
+
+    background: white;
+
+    padding:
+        11px 17px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    color: #64748b;
+
+}
+
+.lesson-tab.active {
+
+    background: #4f46e5;
+
+    color: white;
+
+    border-color: #4f46e5;
+
+}
+
+.lesson-tab small {
+
+    display: block;
+
+    margin-top: 3px;
+
+}
+
+.exercise-box {
+
+    background: #f3f1ff;
+
+    border-left:
+        4px solid #6366f1;
+
+    border-radius: 8px;
+
+    padding: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+.exercise-box p {
+
+    color: #64748b;
+
+    line-height: 1.7;
+
+}
+
+
+/* =====================================================
+   CODE EDITOR
+===================================================== */
+
+.code-workspace {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 16px;
+
+}
+
+.code-panel,
+.preview-panel {
+
+    background: white;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 13px;
+
+    overflow: hidden;
+
+}
+
+.code-header {
+
+    height: 54px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        0 14px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    background: #fafafa;
+
+}
+
+.code-header button {
+
+    border:
+        1px solid #d9dce5;
+
+    background: white;
+
+    padding:
+        7px 12px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+}
+
+.code-header .run {
+
+    background: #4f46e5;
+
+    color: white;
+
+    border-color: #4f46e5;
+
+}
+
+#codeEditor {
+
+    display: block;
+
+    width: 100%;
+
+    height: 450px;
+
+    resize: none;
+
+    border: none;
+
+    outline: none;
+
+    padding: 18px;
+
+    background: #111827;
+
+    color: #e5e7eb;
+
+    font-family:
+        Consolas,
+        Monaco,
+        monospace;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+}
+
+#codePreview {
+
+    width: 100%;
+
+    height: 450px;
+
+    border: none;
+
+    background: white;
+
+}
+
+
+/* =====================================================
+   CERTIFICATE
+===================================================== */
+
+.certificate-box {
+
+    max-width: 700px;
+
+    margin: 30px auto;
+
+    background: white;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 15px;
+
+    padding: 45px;
+
+    text-align: center;
+
+}
+
+.certificate-icon {
+
+    font-size: 65px;
+
+}
+
+.certificate-box h2 {
+
+    margin-bottom: 8px;
+
+}
+
+.certificate-box p {
+
+    color: #64748b;
+
+}
+
+.certificate-info {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    margin:
+        25px 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+}
+
+.primary-button {
+
+    border: none;
+
+    background: #4f46e5;
+
+    color: white;
+
+    padding:
+        12px 22px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+}
+
+
+/* =====================================================
+   CAREER PATH
+===================================================== */
+
+.roadmap {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow-x: auto;
+
+    padding: 30px 10px;
+
+}
+
+.roadmap-card {
+
+    min-width: 210px;
+
+    background: white;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    padding: 22px;
+
+    text-align: center;
+
+}
+
+.roadmap-number {
+
+    width: 42px;
+
+    height: 42px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: #4f46e5;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: 800;
+
+}
+
+.roadmap-card p {
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+}
+
+.roadmap-line {
+
+    width: 55px;
+
+    height: 3px;
+
+    background: #c7c2ff;
+
+}
+
+
+/* =====================================================
+   BEHAVIOR
+===================================================== */
+
+.question-box {
+
+    max-width: 720px;
+
+    margin: 20px auto;
+
+    background: white;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+}
+
+.question-number {
+
+    color: #4f46e5;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    margin-bottom: 15px;
+
+}
+
+.question-box h2 {
+
+    font-size: 20px;
+
+    line-height: 1.6;
+
+}
+
+.answer {
+
+    display: block;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 9px;
+
+    padding: 14px;
+
+    margin: 10px 0;
+
+    cursor: pointer;
+
+}
+
+.answer:hover {
+
+    background: #f5f3ff;
+
+    border-color: #9b92ff;
+
+}
+
+
+/* =====================================================
+   JOBS
+===================================================== */
+
+.job-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+}
+
+.job-card {
+
+    background: white;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+.job-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    background: #efedff;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 27px;
+
+}
+
+.job-info {
+
+    flex: 1;
+
+}
+
+.job-info h3 {
+
+    margin: 0 0 5px;
+
+}
+
+.job-info p {
+
+    margin: 0 0 5px;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+}
+
+.job-info span {
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+}
+
+.job-button {
+
+    border:
+        1px solid #4f46e5;
+
+    color: #4f46e5;
+
+    background: white;
+
+    padding:
+        9px 15px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    background: #1f2937;
+
+    color: white;
+
+    padding:
+        13px 18px;
+
+    border-radius: 9px;
+
+    display: none;
+
+    z-index: 100;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width: 1100px) {
+
+    .stat-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .career-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .career-options {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+@media(max-width: 800px) {
+
+    .sidebar {
+
+        width: 210px;
+
+    }
+
+    .main {
+
+        margin-left: 210px;
+
+        width:
+            calc(100% - 210px);
+
+    }
+
+    .code-workspace {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+@media(max-width: 650px) {
+
+    .sidebar {
+
+        display: none;
+
+    }
+
+    .main {
+
+        margin-left: 0;
+
+        width: 100%;
+
+    }
+
+    .page {
+
+        padding: 18px;
+
+    }
+
+    .stat-grid,
+    .career-grid,
+    .career-options {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .page-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+    }
+
+    .job-card {
+
+        flex-wrap: wrap;
+
+    }
+
+    .job-button {
+
+        width: 100%;
+
+    }
+
+    .roadmap {
+
+        justify-content: flex-start;
+
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <main class="container">
 
-        <!-- =========================
-             Header
-        ========================== -->
-        <section class="page-header">
+<div class="app">
 
-            <div>
-                <h1>เส้นทางอาชีพ</h1>
-                <p>เริ่มต้นเส้นทางอาชีพของคุณทีละขั้นตอน</p>
-            </div>
 
-            <button class="history-btn" onclick="showHistory()">
-                <span class="history-icon">↶</span>
-                ดูประวัติการทำรายการ
-            </button>
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
 
-        </section>
+<aside class="sidebar">
 
 
-        <!-- =========================
-             Statistics
-        ========================== -->
-        <section class="stats">
+    <div class="logo">
 
-            <div class="stat-card">
+        <div class="logo-title">
+            prototype ระบบเส้นทางอาชีพ
+        </div>
 
-                <div class="stat-icon purple">
-                    👥
-                </div>
-
-                <div>
-                    <div class="stat-number">1,256</div>
-                    <div class="stat-label">ผู้ใช้งานทั้งหมด</div>
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon blue">
-                    💼
-                </div>
-
-                <div>
-                    <div class="stat-number">327</div>
-                    <div class="stat-label">ตำแหน่งที่เปิดรับ</div>
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon green">
-                    📋
-                </div>
-
-                <div>
-                    <div class="stat-number">842</div>
-                    <div class="stat-label">ผู้ทำแบบทดสอบผ่าน</div>
-                </div>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon orange">
-                    👤
-                </div>
-
-                <div>
-                    <div class="stat-number">215</div>
-                    <div class="stat-label">ผู้สมัครที่ได้รับภาษณ์</div>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             Career Path
-        ========================== -->
-        <section class="career-panel">
-
-            <div class="panel-title">
-                <h2>ขั้นตอนเส้นทางอาชีพของคุณ</h2>
-            </div>
-
-
-            <!-- Progress Line -->
-            <div class="progress-area">
-
-                <div class="progress-line"></div>
-
-                <div class="progress-steps">
-
-                    <div class="number active">1</div>
-
-                    <div class="arrow">›</div>
-
-                    <div class="number active">2</div>
-
-                    <div class="arrow">›</div>
-
-                    <div class="number active">3</div>
-
-                    <div class="arrow">›</div>
-
-                    <div class="number active current">4</div>
-
-                    <div class="arrow">›</div>
-
-                    <div class="number active">5</div>
-
-                    <div class="arrow">›</div>
-
-                    <div class="number active">6</div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Cards -->
-            <div class="career-cards">
-
-
-                <!-- Card 1 -->
-                <div class="career-card">
-
-                    <h3>เลือกสายอาชีพ</h3>
-
-                    <p>
-                        เลือกสายอาชีพที่<br>
-                        คุณสนใจ
-                    </p>
-
-                    <div class="illustration">
-                        <div class="person">👨🏻‍💻</div>
-                        <div class="bubble bubble-1">⌘</div>
-                        <div class="bubble bubble-2">📊</div>
-                        <div class="bubble bubble-3">●</div>
-                    </div>
-
-                    <div class="status done">
-
-                        <span class="status-icon">✓</span>
-
-                        <div>
-                            <strong>เสร็จสิ้น</strong>
-                            <small>12 มิ.ย. 2567</small>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Card 2 -->
-                <div class="career-card">
-
-                    <h3>เรียนรู้สายอาชีพ</h3>
-
-                    <p>
-                        เรียนรู้ความรู้และทักษะ<br>
-                        ในสายอาชีพนั้น
-                    </p>
-
-                    <div class="illustration book">
-                        📖
-                        <span>💡</span>
-                    </div>
-
-                    <div class="status done">
-
-                        <span class="status-icon">✓</span>
-
-                        <div>
-                            <strong>เสร็จสิ้น</strong>
-                            <small>15 มิ.ย. 2567</small>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Card 3 -->
-                <div class="career-card">
-
-                    <h3>ผ่านการทดสอบ<br>Certificate</h3>
-
-                    <p>
-                        ทดสอบความรู้เพื่อรับ<br>
-                        ใบรับรองสายอาชีพ
-                    </p>
-
-                    <div class="illustration certificate">
-                        📜
-                    </div>
-
-                    <div class="status done">
-
-                        <span class="status-icon">✓</span>
-
-                        <div>
-                            <strong>เสร็จสิ้น</strong>
-                            <small>18 มิ.ย. 2567</small>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Card 4 -->
-                <div class="career-card current-card">
-
-                    <h3>Career Path</h3>
-
-                    <p>
-                        ข้อมูลเส้นทางการเติบโต<br>
-                        ในสายอาชีพ
-                    </p>
-
-                    <div class="illustration route">
-                        <div class="route-line"></div>
-                        <div class="route-dot dot1"></div>
-                        <div class="route-dot dot2"></div>
-                        <div class="route-dot dot3"></div>
-                        <div class="location">●</div>
-                    </div>
-
-                    <div class="status progress">
-
-                        <span class="progress-circle"></span>
-
-                        <div>
-                            <strong>กำลังดำเนินการ</strong>
-                            <small>70%</small>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Card 5 -->
-                <div class="career-card">
-
-                    <h3>ทดสอบพฤติกรรม<br>และจรรยาบรรณ</h3>
-
-                    <p>
-                        ประเมินพฤติกรรมและ<br>
-                        จรรยาบรรณในสายอาชีพ
-                    </p>
-
-                    <div class="illustration brain">
-                        🧠
-                    </div>
-
-                    <div class="status waiting">
-
-                        <span class="empty-circle"></span>
-
-                        <div>
-                            <strong>ยังไม่เริ่มต้น</strong>
-                            <small>0%</small>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Card 6 -->
-                <div class="career-card">
-
-                    <h3>ตำแหน่งเพิ่มเติม</h3>
-
-                    <p>
-                        ค้นหาตำแหน่งงาน<br>
-                        ที่เหมาะสมเพิ่มเติม
-                    </p>
-
-                    <div class="illustration trophy">
-                        🏆
-                    </div>
-
-                    <div class="status waiting">
-
-                        <span class="empty-circle"></span>
-
-                        <div>
-                            <strong>ยังไม่เริ่มต้น</strong>
-                            <small>0%</small>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             Footer
-        ========================== -->
-
-        <section class="bottom-message">
-
-            <div class="message-icon">
-                ✨
-            </div>
-
-            <div>
-                <h3>
-                    ทำตามขั้นตอนทั้งหมดเพื่อปลดล็อกโอกาสในสายอาชีพของคุณ
-                </h3>
-
-                <p>
-                    เมื่อทำครบทุกขั้นตอน คุณจะได้รับคำแนะนำตำแหน่งงานที่เหมาะสม
-                    และโอกาสการเติบโตในสายอาชีพ
-                </p>
-            </div>
-
-        </section>
-
-
-        <footer>
-            © 2024 prototype ระบบเส้นทางอาชีพและการพัฒนาทักษะ
-            <span>นโยบายความเป็นส่วนตัว</span>
-            <span>เงื่อนไขการใช้งาน</span>
-        </footer>
-
-    </main>
-
-
-    <!-- Modal ประวัติ -->
-    <div id="historyModal" class="modal">
-
-        <div class="modal-box">
-
-            <button class="close" onclick="closeHistory()">×</button>
-
-            <h2>ประวัติการทำรายการ</h2>
-
-            <div class="history-item">
-                <span>✓</span>
-                <div>
-                    <strong>เลือกสายอาชีพ</strong>
-                    <small>12 มิ.ย. 2567</small>
-                </div>
-            </div>
-
-            <div class="history-item">
-                <span>✓</span>
-                <div>
-                    <strong>เรียนรู้สายอาชีพ</strong>
-                    <small>15 มิ.ย. 2567</small>
-                </div>
-            </div>
-
-            <div class="history-item">
-                <span>✓</span>
-                <div>
-                    <strong>Certificate</strong>
-                    <small>18 มิ.ย. 2567</small>
-                </div>
-            </div>
-
-            <button class="close-btn" onclick="closeHistory()">
-                ปิด
-            </button>
-
+        <div class="logo-subtitle">
+            และการพัฒนาทักษะ
         </div>
 
     </div>
 
 
-    <script src="script.js"></script>
+    <button
+        class="dashboard-menu"
+        onclick="showPage('dashboard')">
+
+        🏠 DASHBOARD
+
+    </button>
+
+
+    <div class="menu-section">
+
+        <div class="menu-section-title">
+            PROFILE
+        </div>
+
+        <button class="menu-item">
+            👤
+            ประวัติส่วนตัว
+        </button>
+
+        <button class="menu-item">
+            📞
+            ข้อมูลติดต่อ
+        </button>
+
+        <button class="menu-item">
+            📄
+            อธิบายตัวเอง
+        </button>
+
+        <button class="menu-item">
+            📜
+            Certificate
+        </button>
+
+        <button class="menu-item">
+            📋
+            RESUME
+        </button>
+
+        <button class="menu-item">
+            💬
+            CHAT
+        </button>
+
+        <button class="menu-item">
+            📊
+            สถานะ
+        </button>
+
+    </div>
+
+
+    <div class="menu-section">
+
+        <div class="menu-section-title">
+            MAIN MENU
+        </div>
+
+
+        <button
+            class="menu-item active"
+            onclick="showPage('career-select')">
+
+            <span class="menu-icon">🧭</span>
+
+            เลือกสายอาชีพ
+
+        </button>
+
+
+        <button
+            class="menu-item"
+            onclick="showPage('learning')">
+
+            <span class="menu-icon">💡</span>
+
+            เรียนรู้สายอาชีพ
+
+        </button>
+
+
+        <button
+            class="menu-item"
+            onclick="showPage('certificate')">
+
+            <span class="menu-icon">🏆</span>
+
+            Certificate
+
+        </button>
+
+
+        <button
+            class="menu-item"
+            onclick="showPage('behavior')">
+
+            <span class="menu-icon">🧠</span>
+
+            ทดสอบพฤติกรรม
+
+        </button>
+
+
+        <button
+            class="menu-item"
+            onclick="showPage('career-path')">
+
+            <span class="menu-icon">🗺️</span>
+
+            Career Path
+
+        </button>
+
+
+        <button
+            class="menu-item"
+            onclick="showPage('jobs')">
+
+            <span class="menu-icon">💼</span>
+
+            ตำแหน่งงานที่เหมาะสม
+
+        </button>
+
+    </div>
+
+
+    <div class="menu-section">
+
+        <div class="menu-section-title">
+            OTHER
+        </div>
+
+        <button class="menu-item">
+            🔮
+            ดูดวง
+        </button>
+
+        <button class="menu-item">
+            🌐
+            ข้อมูลสายงานทั่วโลก
+        </button>
+
+        <button class="menu-item">
+            🏛️
+            สถาบันรับรอง/ฝึกอบรม
+        </button>
+
+    </div>
+
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+    <div class="notification">
+
+        <button onclick="showToast('ไม่มีการแจ้งเตือนใหม่')">
+
+            🔔
+
+        </button>
+
+        <span class="notification-count">
+            3
+        </span>
+
+    </div>
+
+
+    <div class="profile">
+
+        <div class="profile-avatar">
+            👨🏻
+        </div>
+
+        <div>
+
+            <div class="profile-name">
+                สวัสดี, พัชรพล
+            </div>
+
+            <div class="profile-role">
+                พนักงานทั่วไป
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section
+    id="dashboard"
+    class="page sub-page active">
+
+
+    <div class="page-header">
+
+        <div>
+
+            <h1>
+                เส้นทางอาชีพ
+            </h1>
+
+            <p>
+                เริ่มต้นเส้นทางอาชีพของคุณทีละขั้นตอน
+            </p>
+
+        </div>
+
+
+        <button
+            class="history-button"
+            onclick="showToast('กำลังแสดงประวัติการทำรายการ')">
+
+            🕘 ดูประวัติการทำรายการ
+
+        </button>
+
+    </div>
+
+
+    <!-- STAT -->
+
+    <div class="stat-grid">
+
+
+        <div class="stat-card">
+
+            <div
+                class="stat-icon"
+                style="background:#ede9fe;color:#7c3aed">
+
+                👥
+
+            </div>
+
+            <div>
+
+                <div class="stat-number">
+                    1,256
+                </div>
+
+                <div class="stat-label">
+                    ผู้ใช้งานทั้งหมด
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div
+                class="stat-icon"
+                style="background:#e0f2fe;color:#0284c7">
+
+                💼
+
+            </div>
+
+            <div>
+
+                <div class="stat-number">
+                    327
+                </div>
+
+                <div class="stat-label">
+                    ตำแหน่งที่เปิดรับ
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div
+                class="stat-icon"
+                style="background:#dcfce7;color:#16a34a">
+
+                ✓
+
+            </div>
+
+            <div>
+
+                <div class="stat-number">
+                    842
+                </div>
+
+                <div class="stat-label">
+                    ผู้ทำแบบทดสอบผ่าน
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div
+                class="stat-icon"
+                style="background:#ffedd5;color:#ea580c">
+
+                🏆
+
+            </div>
+
+            <div>
+
+                <div class="stat-number">
+                    215
+                </div>
+
+                <div class="stat-label">
+                    ผู้สมัครที่ได้รับสัมภาษณ์
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- CAREER -->
+
+    <div class="panel">
+
+
+        <div class="panel-header">
+
+            <div class="panel-title">
+
+                ขั้นตอนเส้นทางอาชีพของคุณ
+
+            </div>
+
+            <div class="progress-summary">
+
+                3/6 ขั้นตอนเสร็จสิ้น
+
+            </div>
+
+        </div>
+
+
+        <div class="career-grid">
+
+
+            <!-- 1 -->
+
+            <div
+                class="career-card"
+                onclick="showPage('career-select')">
+
+                <h3>
+                    เลือกสายอาชีพ
+                </h3>
+
+                <p>
+                    เลือกสายอาชีพที่คุณสนใจ
+                </p>
+
+                <div class="illustration">
+                    👨🏻‍💻
+                </div>
+
+                <div class="status">
+
+                    <span class="status-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            เสร็จสิ้น
+                        </strong>
+
+                        <small>
+                            12 มิ.ย. 2567
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2 -->
+
+            <div
+                class="career-card"
+                onclick="showPage('learning')">
+
+                <h3>
+                    เรียนรู้สายอาชีพ
+                </h3>
+
+                <p>
+                    เรียนรู้ความรู้และทักษะในสายอาชีพนั้น
+                </p>
+
+                <div class="illustration">
+                    📖
+                </div>
+
+                <div class="status">
+
+                    <span class="status-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            เสร็จสิ้น
+                        </strong>
+
+                        <small>
+                            15 มิ.ย. 2567
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 3 -->
+
+            <div
+                class="career-card"
+                onclick="showPage('certificate')">
+
+                <h3>
+                    ผ่านการทดสอบ Certificate
+                </h3>
+
+                <p>
+                    ทดสอบความรู้เพื่อรับใบรับรองสายอาชีพ
+                </p>
+
+                <div class="illustration">
+                    📜
+                </div>
+
+                <div class="status">
+
+                    <span class="status-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            เสร็จสิ้น
+                        </strong>
+
+                        <small>
+                            18 มิ.ย. 2567
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 4 -->
+
+            <div
+                class="career-card"
+                onclick="showPage('career-path')">
+
+                <h3>
+                    Career Path
+                </h3>
+
+                <p>
+                    ข้อมูลเส้นทางการเติบโตในสายอาชีพ
+                </p>
+
+                <div class="illustration">
+                    🗺️
+                </div>
+
+                <div class="status">
+
+                    <span class="progress-circle">
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            กำลังดำเนินการ
+                        </strong>
+
+                        <small>
+                            70%
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 5 -->
+
+            <div
+                class="career-card"
+                onclick="showPage('behavior')">
+
+                <h3>
+                    ทดสอบพฤติกรรมและจรรยาบรรณ
+                </h3>
+
+                <p>
+                    ประเมินพฤติกรรมและจรรยาบรรณ
+                </p>
+
+                <div class="illustration">
+                    🧠
+                </div>
+
+                <div class="status">
+
+                    <span class="empty-circle">
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            ยังไม่เริ่มต้น
+                        </strong>
+
+                        <small>
+                            0%
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 6 -->
+
+            <div
+                class="career-card"
+                onclick="showPage('jobs')">
+
+                <h3>
+                    ตำแหน่งเพิ่มเติม
+                </h3>
+
+                <p>
+                    ค้นหาตำแหน่งงานที่เหมาะสมเพิ่มเติม
+                </p>
+
+                <div class="illustration">
+                    🏆
+                </div>
+
+                <div class="status">
+
+                    <span class="empty-circle">
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            ยังไม่เริ่มต้น
+                        </strong>
+
+                        <small>
+                            0%
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="info-bar">
+
+            <div class="info-icon">
+                💡
+            </div>
+
+            <div>
+
+                <h3>
+                    ทำตามขั้นตอนทั้งหมดเพื่อปลดล็อกโอกาสในสายอาชีพของคุณ
+                </h3>
+
+                <p>
+                    เมื่อทำครบทุกขั้นตอน
+                    คุณจะได้รับคำแนะนำตำแหน่งงานที่เหมาะสม
+                    และโอกาสการเติบโตในสายอาชีพ
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     SELECT CAREER
+===================================================== -->
+
+<section
+    id="career-select"
+    class="page sub-page">
+
+
+    <button
+        class="back-button"
+        onclick="showPage('dashboard')">
+
+        ← กลับ Dashboard
+
+    </button>
+
+
+    <div class="sub-header">
+
+        <h1>
+            เลือกสายอาชีพ
+        </h1>
+
+        <p>
+            เลือกสายอาชีพที่คุณสนใจ
+            เพื่อสร้างเส้นทางการพัฒนาของคุณ
+        </p>
+
+    </div>
+
+
+    <div class="career-options">
+
+
+        <div
+            class="career-option"
+            onclick="selectCareer('Programmer')">
+
+            <div class="option-icon">
+                👨‍💻
+            </div>
+
+            <h3>
+                Programmer
+            </h3>
+
+            <p>
+                นักพัฒนาโปรแกรม
+            </p>
+
+        </div>
+
+
+        <div
+            class="career-option"
+            onclick="selectCareer('Web Developer')">
+
+            <div class="option-icon">
+                🌐
+            </div>
+
+            <h3>
+                Web Developer
+            </h3>
+
+            <p>
+                นักพัฒนาเว็บไซต์
+            </p>
+
+        </div>
+
+
+        <div
+            class="career-option"
+            onclick="selectCareer('Data Analyst')">
+
+            <div class="option-icon">
+                📊
+            </div>
+
+            <h3>
+                Data Analyst
+            </h3>
+
+            <p>
+                นักวิเคราะห์ข้อมูล
+            </p>
+
+        </div>
+
+
+        <div
+            class="career-option"
+            onclick="selectCareer('UX/UI Designer')">
+
+            <div class="option-icon">
+                🎨
+            </div>
+
+            <h3>
+                UX/UI Designer
+            </h3>
+
+            <p>
+                นักออกแบบประสบการณ์ผู้ใช้
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     LEARNING
+===================================================== -->
+
+<section
+    id="learning"
+    class="page sub-page">
+
+
+    <button
+        class="back-button"
+        onclick="showPage('dashboard')">
+
+        ← กลับ Dashboard
+
+    </button>
+
+
+    <div class="sub-header">
+
+        <h1>
+            เรียนรู้สายอาชีพ
+        </h1>
+
+        <p>
+            เรียนรู้ทักษะที่จำเป็นสำหรับสายงาน Programmer
+        </p>
+
+    </div>
+
+
+    <div class="lesson-tabs">
+
+        <button class="lesson-tab active">
+            Lesson 01
+            <small>HTML</small>
+        </button>
+
+        <button class="lesson-tab">
+            Lesson 02
+            <small>CSS</small>
+        </button>
+
+        <button class="lesson-tab">
+            Lesson 03
+            <small>JavaScript</small>
+        </button>
+
+        <button class="lesson-tab">
+            Lesson 04
+            <small>Web Development</small>
+        </button>
+
+    </div>
+
+
+    <div class="panel">
+
+
+        <h2>
+            🧑‍💻 แบบฝึกหัดทดลองเขียนโค้ด
+        </h2>
+
+
+        <p>
+            ทดลองเขียนโปรแกรมเบื้องต้น
+            สำหรับสายงาน Programmer
+            และดูผลลัพธ์ได้ทันที
+        </p>
+
+
+        <div class="exercise-box">
+
+            <strong>
+                🎯 โจทย์แบบฝึกหัด
+            </strong>
+
+            <p>
+                สร้างหน้าเว็บไซต์แนะนำตัวเอง
+                โดยให้มีหัวข้อ ชื่อของคุณ
+                ข้อความแนะนำตัว และปุ่ม “สวัสดี”
+                เมื่อกดปุ่มให้แสดงข้อความ
+                “ยินดีต้อนรับสู่เว็บไซต์ของฉัน”
+            </p>
+
+        </div>
+
+
+        <div class="code-workspace">
+
+
+            <div class="code-panel">
+
+
+                <div class="code-header">
+
+                    <strong>
+                        💻 Code Editor
+                    </strong>
+
+                    <div>
+
+                        <button
+                            onclick="resetCode()">
+
+                            รีเซ็ต
+
+                        </button>
+
+                        <button
+                            class="run"
+                            onclick="runCode()">
+
+                            ▶ รันโค้ด
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+<textarea
+id="codeEditor"
+spellcheck="false"><!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+body {
+    font-family: Arial;
+    text-align: center;
+    padding: 50px;
+    background: #f8f9ff;
+}
+
+h1 {
+    color: #5946d2;
+}
+
+button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #5946d2;
+    color: white;
+    cursor: pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>
+สวัสดีครับ
+</h1>
+
+<p>
+ฉันกำลังฝึกเขียนโปรแกรม
+</p>
+
+<button onclick="welcome()">
+สวัสดี
+</button>
+
+<script>
+
+function welcome() {
+
+    alert(
+        "ยินดีต้อนรับสู่เว็บไซต์ของฉัน"
+    );
+
+}
+
+</script>
 
 </body>
+
+</html></textarea>
+
+
+            </div>
+
+
+            <div class="preview-panel">
+
+
+                <div class="code-header">
+
+                    <strong>
+                        🌐 ผลลัพธ์
+                    </strong>
+
+                    <span>
+                        Preview
+                    </span>
+
+                </div>
+
+
+                <iframe
+                    id="codePreview"
+                    title="Code Preview">
+                </iframe>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     CERTIFICATE
+===================================================== -->
+
+<section
+    id="certificate"
+    class="page sub-page">
+
+
+    <button
+        class="back-button"
+        onclick="showPage('dashboard')">
+
+        ← กลับ Dashboard
+
+    </button>
+
+
+    <div class="sub-header">
+
+        <h1>
+            ผ่านการทดสอบ Certificate
+        </h1>
+
+        <p>
+            ทดสอบความรู้เพื่อรับใบรับรองสายอาชีพ
+        </p>
+
+    </div>
+
+
+    <div class="certificate-box">
+
+
+        <div class="certificate-icon">
+            🏆
+        </div>
+
+
+        <h2>
+            Programmer Certificate
+        </h2>
+
+
+        <p>
+            แบบทดสอบความรู้พื้นฐานด้านการเขียนโปรแกรม
+        </p>
+
+
+        <div class="certificate-info">
+
+            <span>
+                📝 20 ข้อ
+            </span>
+
+            <span>
+                ⏱ 30 นาที
+            </span>
+
+            <span>
+                🎯 ผ่านที่ 70%
+            </span>
+
+        </div>
+
+
+        <button
+            class="primary-button"
+            onclick="showToast('เริ่มทำแบบทดสอบ Certificate')">
+
+            เริ่มทำแบบทดสอบ
+
+        </button>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     CAREER PATH
+===================================================== -->
+
+<section
+    id="career-path"
+    class="page sub-page">
+
+
+    <button
+        class="back-button"
+        onclick="showPage('dashboard')">
+
+        ← กลับ Dashboard
+
+    </button>
+
+
+    <div class="sub-header">
+
+        <h1>
+            Career Path
+        </h1>
+
+        <p>
+            เส้นทางการเติบโตในสายงาน Programmer
+        </p>
+
+    </div>
+
+
+    <div class="roadmap">
+
+
+        <div class="roadmap-card">
+
+            <div class="roadmap-number">
+                01
+            </div>
+
+            <h3>
+                Junior Programmer
+            </h3>
+
+            <p>
+                เรียนรู้พื้นฐานการเขียนโปรแกรม
+                และพัฒนาเว็บไซต์
+            </p>
+
+        </div>
+
+
+        <div class="roadmap-line"></div>
+
+
+        <div class="roadmap-card">
+
+            <div class="roadmap-number">
+                02
+            </div>
+
+            <h3>
+                Senior Programmer
+            </h3>
+
+            <p>
+                พัฒนา Software
+                และแก้ไขปัญหาที่ซับซ้อน
+            </p>
+
+        </div>
+
+
+        <div class="roadmap-line"></div>
+
+
+        <div class="roadmap-card">
+
+            <div class="roadmap-number">
+                03
+            </div>
+
+            <h3>
+                Team Leader
+            </h3>
+
+            <p>
+                บริหารทีม
+                และวางแผนโครงการ
+            </p>
+
+        </div>
+
+
+        <div class="roadmap-line"></div>
+
+
+        <div class="roadmap-card">
+
+            <div class="roadmap-number">
+                04
+            </div>
+
+            <h3>
+                Software Architect
+            </h3>
+
+            <p>
+                ออกแบบระบบ Software
+                ระดับองค์กร
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     BEHAVIOR
+===================================================== -->
+
+<section
+    id="behavior"
+    class="page sub-page">
+
+
+    <button
+        class="back-button"
+        onclick="showPage('dashboard')">
+
+        ← กลับ Dashboard
+
+    </button>
+
+
+    <div class="sub-header">
+
+        <h1>
+            ทดสอบพฤติกรรมและจรรยาบรรณ
+        </h1>
+
+        <p>
+            ประเมินพฤติกรรมและรูปแบบการทำงาน
+            ในสายอาชีพ
+        </p>
+
+    </div>
+
+
+    <div class="question-box">
+
+
+        <div class="question-number">
+
+            คำถามที่ 1 / 10
+
+        </div>
+
+
+        <h2>
+
+            หากสมาชิกในทีมทำงานล่าช้า
+            คุณจะทำอย่างไร?
+
+        </h2>
+
+
+        <label class="answer">
+
+            <input
+                type="radio"
+                name="behavior">
+
+            พูดคุยและช่วยหาสาเหตุ
+
+        </label>
+
+
+        <label class="answer">
+
+            <input
+                type="radio"
+                name="behavior">
+
+            แจ้งหัวหน้าทันที
+
+        </label>
+
+
+        <label class="answer">
+
+            <input
+                type="radio"
+                name="behavior">
+
+            ปล่อยให้เขาจัดการเอง
+
+        </label>
+
+
+        <label class="answer">
+
+            <input
+                type="radio"
+                name="behavior">
+
+            ทำงานแทนทั้งหมด
+
+        </label>
+
+
+        <br>
+
+
+        <button
+            class="primary-button"
+            onclick="nextQuestion()">
+
+            ถัดไป →
+
+        </button>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =====================================================
+     JOBS
+===================================================== -->
+
+<section
+    id="jobs"
+    class="page sub-page">
+
+
+    <button
+        class="back-button"
+        onclick="showPage('dashboard')">
+
+        ← กลับ Dashboard
+
+    </button>
+
+
+    <div class="sub-header">
+
+        <h1>
+            ตำแหน่งงานที่เหมาะสม
+        </h1>
+
+        <p>
+            ตำแหน่งงานที่ระบบแนะนำ
+            จากโปรไฟล์และผลการทดสอบ
+        </p>
+
+    </div>
+
+
+    <div class="job-list">
+
+
+        <div class="job-card">
+
+            <div class="job-icon">
+                💻
+            </div>
+
+            <div class="job-info">
+
+                <h3>
+                    Junior Programmer
+                </h3>
+
+                <p>
+                    Software Technology Company
+                </p>
+
+                <span>
+                    📍 กรุงเทพฯ
+                </span>
+
+            </div>
+
+            <button
+                class="job-button"
+                onclick="showToast('เปิดรายละเอียด Junior Programmer')">
+
+                ดูรายละเอียด
+
+            </button>
+
+        </div>
+
+
+        <div class="job-card">
+
+            <div class="job-icon">
+                🌐
+            </div>
+
+            <div class="job-info">
+
+                <h3>
+                    Frontend Developer
+                </h3>
+
+                <p>
+                    Digital Technology Company
+                </p>
+
+                <span>
+                    📍 กรุงเทพฯ
+                </span>
+
+            </div>
+
+            <button
+                class="job-button"
+                onclick="showToast('เปิดรายละเอียด Frontend Developer')">
+
+                ดูรายละเอียด
+
+            </button>
+
+        </div>
+
+
+        <div class="job-card">
+
+            <div class="job-icon">
+                📊
+            </div>
+
+            <div class="job-info">
+
+                <h3>
+                    Junior Data Analyst
+                </h3>
+
+                <p>
+                    Data & Technology Company
+                </p>
+
+                <span>
+                    📍 กรุงเทพฯ
+                </span>
+
+            </div>
+
+            <button
+                class="job-button"
+                onclick="showToast('เปิดรายละเอียด Junior Data Analyst')">
+
+                ดูรายละเอียด
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    id="toast"
+    class="toast">
+</div>
+
+
+<script>
+
+/* =====================================================
+   PAGE NAVIGATION
+===================================================== */
+
+function showPage(pageId) {
+
+
+    document
+        .querySelectorAll(".sub-page")
+        .forEach(page => {
+
+            page.classList.remove("active");
+
+        });
+
+
+    const page =
+        document.getElementById(pageId);
+
+
+    if (page) {
+
+        page.classList.add("active");
+
+    }
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* =====================================================
+   CAREER
+===================================================== */
+
+function selectCareer(career) {
+
+    showToast(
+        "เลือกสายอาชีพ: " + career
+    );
+
+}
+
+
+/* =====================================================
+   CODE EDITOR
+===================================================== */
+
+function runCode() {
+
+
+    const editor =
+        document.getElementById(
+            "codeEditor"
+        );
+
+
+    const preview =
+        document.getElementById(
+            "codePreview"
+        );
+
+
+    if (!editor || !preview) {
+
+        return;
+
+    }
+
+
+    preview.srcdoc =
+        editor.value;
+
+
+    showToast(
+        "รันโค้ดเรียบร้อยแล้ว"
+    );
+
+}
+
+
+/* =====================================================
+   RESET CODE
+===================================================== */
+
+function resetCode() {
+
+
+    const editor =
+        document.getElementById(
+            "codeEditor"
+        );
+
+
+    if (!editor) {
+
+        return;
+
+    }
+
+
+    editor.value = `<!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+body {
+    font-family: Arial;
+    text-align: center;
+    padding: 50px;
+    background: #f8f9ff;
+}
+
+h1 {
+    color: #5946d2;
+}
+
+button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    background: #5946d2;
+    color: white;
+    cursor: pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>
+สวัสดีครับ
+</h1>
+
+<p>
+ฉันกำลังฝึกเขียนโปรแกรม
+</p>
+
+<button onclick="welcome()">
+สวัสดี
+</button>
+
+<script>
+
+function welcome() {
+
+    alert(
+        "ยินดีต้อนรับสู่เว็บไซต์ของฉัน"
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>`;
+
+
+    runCode();
+
+}
+
+
+/* =====================================================
+   BEHAVIOR
+===================================================== */
+
+function nextQuestion() {
+
+
+    const answer =
+        document.querySelector(
+            'input[name="behavior"]:checked'
+        );
+
+
+    if (!answer) {
+
+        showToast(
+            "กรุณาเลือกคำตอบก่อน"
+        );
+
+        return;
+
+    }
+
+
+    showToast(
+        "บันทึกคำตอบเรียบร้อยแล้ว"
+    );
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message) {
+
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.style.display =
+        "block";
+
+
+    clearTimeout(
+        window.toastTimer
+    );
+
+
+    window.toastTimer =
+        setTimeout(
+            function() {
+
+                toast.style.display =
+                    "none";
+
+            },
+            2200
+        );
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        runCode();
+
+    }
+);
+
+</script>
+
+
+</body>
+
 </html>
