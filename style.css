@@ -881,3 +881,1149 @@ footer span {
         margin: 7px 0 0;
     }
 }
+/* =====================================================
+   STATIC CAREER PAGES
+===================================================== */
+
+.page {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 30px;
+}
+
+
+/* Header */
+
+.top-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 25px;
+}
+
+.top-header h1 {
+    margin: 0 0 6px;
+
+    font-size: 27px;
+}
+
+.top-header p {
+    margin: 0;
+
+    color: #667085;
+
+    font-size: 14px;
+}
+
+
+.step-badge {
+    background: #efedff;
+
+    color: #5845d2;
+
+    padding: 9px 16px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* Banner */
+
+.career-banner,
+.learning-header,
+.psychology-hero,
+.job-summary {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    background: white;
+
+    border: 1px solid #e5e7ef;
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    margin-bottom: 28px;
+}
+
+
+.banner-icon,
+.learning-icon,
+.psychology-icon,
+.summary-icon {
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 16px;
+
+    background: #efedff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 38px;
+}
+
+
+.career-banner h2,
+.learning-header h2,
+.psychology-hero h2,
+.job-summary h2 {
+
+    margin: 0 0 7px;
+
+    font-size: 21px;
+}
+
+
+.career-banner p,
+.learning-header p,
+.psychology-hero p,
+.job-summary p {
+
+    margin: 0;
+
+    color: #667085;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+
+/* Section */
+
+.section-title {
+
+    font-size: 19px;
+
+    margin: 25px 0 15px;
+}
+
+
+/* Career selection */
+
+.career-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 17px;
+}
+
+
+.career-option {
+
+    background: white;
+
+    border: 1px solid #e5e7ef;
+
+    border-radius: 13px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    min-height: 230px;
+
+    transition: .2s;
+}
+
+
+.career-option:hover {
+
+    border-color: #8172dc;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(50,40,130,.08);
+}
+
+
+.big-icon {
+
+    font-size: 48px;
+
+    margin-bottom: 10px;
+}
+
+
+.career-option h3 {
+
+    margin: 5px 0;
+
+    font-size: 17px;
+}
+
+
+.career-option p {
+
+    margin: 0 0 14px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+.tag,
+.skill-list span,
+.job-tags span {
+
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 15px;
+
+    background: #f0eeff;
+
+    color: #5947ce;
+
+    font-size: 11px;
+
+    margin: 2px;
+}
+
+
+/* Info */
+
+.info-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 25px;
+
+    background: #f5f3ff;
+
+    border: 1px solid #e3defd;
+
+    border-radius: 12px;
+
+    padding: 18px;
+}
+
+
+.info-icon {
+
+    font-size: 28px;
+}
+
+
+.info-box h3 {
+
+    margin: 0 0 5px;
+
+    font-size: 14px;
+}
+
+
+.info-box p {
+
+    margin: 0;
+
+    font-size: 12px;
+
+    color: #687086;
+}
+
+
+/* Learning */
+
+.learning-header {
+
+    padding: 30px;
+}
+
+
+.learning-icon {
+
+    background: #eaf6ff;
+}
+
+
+.progress-text {
+
+    margin-top: 12px;
+
+    font-size: 12px;
+
+    color: #667085;
+}
+
+
+.large-progress {
+
+    width: 400px;
+
+    max-width: 100%;
+
+    height: 8px;
+
+    background: #e5e7eb;
+
+    border-radius: 10px;
+
+    margin-top: 7px;
+
+    overflow: hidden;
+}
+
+
+.large-progress div {
+
+    height: 100%;
+
+    background: #5a47d5;
+
+    border-radius: 10px;
+}
+
+
+.course-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+}
+
+
+.course-card {
+
+    background: white;
+
+    border: 1px solid #e5e7ef;
+
+    border-radius: 13px;
+
+    padding: 22px;
+
+    min-height: 190px;
+}
+
+
+.course-number {
+
+    color: #5a47d5;
+
+    font-weight: 700;
+
+    font-size: 13px;
+}
+
+
+.course-card h3 {
+
+    margin: 18px 0 8px;
+
+    font-size: 16px;
+}
+
+
+.course-card p {
+
+    color: #6b7280;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+.course-bottom {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 25px;
+
+    font-size: 11px;
+
+    color: #777;
+}
+
+
+.course-bottom .learning {
+
+    color: #5a47d5;
+
+    font-weight: 600;
+}
+
+
+/* Certificate */
+
+.certificate-result {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    background: #f2fff8;
+
+    border: 1px solid #ccefe0;
+
+    border-radius: 14px;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+}
+
+
+.certificate-icon {
+
+    font-size: 55px;
+}
+
+
+.certificate-result h2 {
+
+    margin: 0 0 6px;
+
+    color: #178357;
+}
+
+
+.certificate-result p {
+
+    margin: 0;
+
+    color: #59636f;
+}
+
+
+.score {
+
+    margin-top: 8px;
+
+    color: #555;
+
+    font-size: 13px;
+}
+
+
+.score strong {
+
+    font-size: 22px;
+
+    color: #15915d;
+}
+
+
+.certificate-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        1.4fr 1fr;
+
+    gap: 25px;
+}
+
+
+.certificate-preview {
+
+    background: #fff;
+
+    border: 1px solid #e5e7ef;
+
+    border-radius: 14px;
+
+    padding: 30px;
+
+}
+
+
+.certificate-border {
+
+    border: 5px double #d2a93e;
+
+    min-height: 380px;
+
+    text-align: center;
+
+    padding: 35px 20px;
+}
+
+
+.small-title {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: #a67d1e;
+}
+
+
+.certificate-border h2 {
+
+    color: #a67d1e;
+
+    margin: 20px 0;
+}
+
+
+.certificate-border h1 {
+
+    font-size: 28px;
+
+    margin: 10px 0;
+
+    color: #222;
+}
+
+
+.certificate-border h3 {
+
+    color: #5a47d5;
+}
+
+
+.certificate-seal {
+
+    font-size: 45px;
+
+    margin: 18px;
+}
+
+
+.certificate-info {
+
+    background: white;
+
+    border: 1px solid #e5e7ef;
+
+    border-radius: 14px;
+
+    padding: 25px;
+
+    height: fit-content;
+}
+
+
+.certificate-info h2 {
+
+    margin-top: 0;
+
+    font-size: 18px;
+}
+
+
+.detail-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 16px 0;
+
+    border-bottom: 1px solid #edf0f4;
+
+    font-size: 13px;
+}
+
+
+.detail-row span {
+
+    color: #667085;
+}
+
+
+.success {
+
+    color: #15915d;
+}
+
+
+/* Career Path */
+
+.career-path-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+}
+
+
+.path-icon {
+
+    font-size: 40px;
+}
+
+
+.career-path-title h2 {
+
+    margin: 0;
+}
+
+
+.career-path-title p {
+
+    margin: 5px 0;
+
+    color: #777;
+}
+
+
+.path-container {
+
+    position: relative;
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+
+.path-container::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 35px;
+
+    top: 25px;
+
+    bottom: 25px;
+
+    width: 3px;
+
+    background: #d9d5f5;
+}
+
+
+.path-item {
+
+    position: relative;
+
+    display: flex;
+
+    gap: 25px;
+
+    margin-bottom: 25px;
+}
+
+
+.path-number {
+
+    flex-shrink: 0;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    background: #eee;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #777;
+
+    font-weight: 700;
+
+    z-index: 2;
+}
+
+
+.path-item.current .path-number {
+
+    background: #5a47d5;
+
+    color: white;
+
+    box-shadow:
+        0 0 0 7px #eeecff;
+}
+
+
+.path-content {
+
+    flex: 1;
+
+    background: white;
+
+    border: 1px solid #e5e7ef;
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+}
+
+
+.path-item.current .path-content {
+
+    border-color: #8174dd;
+}
+
+
+.level {
+
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 15px;
+
+    background: #f0eeff;
+
+    color: #5a47d5;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+.path-content h2 {
+
+    margin: 10px 0 7px;
+
+    font-size: 17px;
+}
+
+
+.path-content p {
+
+    color: #687086;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* Psychology */
+
+.test-info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+
+.test-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    background: white;
+
+    border: 1px solid #e5e7ef;
+
+    border-radius: 12px;
+
+    padding: 20px;
+}
+
+
+.test-icon {
+
+    font-size: 28px;
+}
+
+
+.test-info small,
+.test-info strong {
+
+    display: block;
+}
+
+
+.test-info small {
+
+    color: #777;
+
+    margin-bottom: 4px;
+}
+
+
+.question-preview {
+
+    background: white;
+
+    border: 1px solid #e5e7ef;
+
+    border-radius: 14px;
+
+    padding: 28px;
+
+}
+
+
+.question-number {
+
+    color: #5a47d5;
+
+    font-weight: 700;
+
+    font-size: 13px;
+}
+
+
+.question-preview h2 {
+
+    font-size: 18px;
+
+    margin: 15px 0 22px;
+
+    line-height: 1.6;
+}
+
+
+.answer-list {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+
+.answer {
+
+    padding: 15px;
+
+    border: 1px solid #e1e4eb;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+}
+
+
+.answer span {
+
+    display: inline-flex;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #f0eeff;
+
+    color: #5a47d5;
+
+    margin-right: 8px;
+
+    font-weight: 700;
+}
+
+
+.test-notice {
+
+    display: flex;
+
+    gap: 12px;
+
+    align-items: center;
+
+    background: #f7f8fc;
+
+    border-radius: 10px;
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    font-size: 12px;
+
+    color: #667085;
+}
+
+
+/* Jobs */
+
+.job-summary {
+
+    position: relative;
+}
+
+
+.job-count {
+
+    margin-left: auto;
+
+    text-align: center;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    color: #5a47d5;
+}
+
+
+.job-count small {
+
+    display: block;
+
+    font-size: 11px;
+
+    color: #777;
+}
+
+
+.filter-row {
+
+    margin: 25px 0 15px;
+}
+
+
+.filter-row h2 {
+
+    margin: 0;
+
+    font-size: 19px;
+}
+
+
+.filter-row p {
+
+    margin: 5px 0;
+
+    font-size: 12px;
+
+    color: #777;
+}
+
+
+.job-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 17px;
+}
+
+
+.job-card {
+
+    display: flex;
+
+    gap: 17px;
+
+    background: white;
+
+    border: 1px solid #e5e7ef;
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    transition: .2s;
+}
+
+
+.job-card:hover {
+
+    border-color: #8476dc;
+
+    box-shadow:
+        0 7px 20px rgba(50,40,130,.07);
+}
+
+
+.company-logo {
+
+    flex-shrink: 0;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 12px;
+
+    background: #f0eeff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+}
+
+
+.job-content {
+
+    flex: 1;
+}
+
+
+.match {
+
+    display: inline-block;
+
+    background: #e9faf2;
+
+    color: #178357;
+
+    padding: 4px 9px;
+
+    border-radius: 12px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+.job-content h2 {
+
+    margin: 8px 0 3px;
+
+    font-size: 17px;
+}
+
+
+.company {
+
+    margin: 0 0 12px;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+.job-details {
+
+    display: flex;
+
+    gap: 15px;
+
+    color: #687086;
+
+    font-size: 11px;
+
+    margin-bottom: 12px;
+}
+
+
+/* Responsive */
+
+@media(max-width:900px) {
+
+    .career-grid,
+    .course-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .certificate-layout {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .job-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .page {
+
+        padding: 18px 12px;
+    }
+
+
+    .top-header {
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    .career-grid,
+    .course-grid,
+    .test-info-grid,
+    .answer-list {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .career-banner,
+    .learning-header,
+    .psychology-hero,
+    .job-summary {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .job-count {
+
+        margin-left: 0;
+    }
+
+}
