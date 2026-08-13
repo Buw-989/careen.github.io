@@ -3176,35 +3176,6 @@ function welcome() {
 }
 
 
-/* =====================================================
-   BEHAVIOR
-===================================================== */
-
-function nextQuestion() {
-
-
-    const answer =
-        document.querySelector(
-            'input[name="behavior"]:checked'
-        );
-
-
-    if (!answer) {
-
-        showToast(
-            "กรุณาเลือกคำตอบก่อน"
-        );
-
-        return;
-
-    }
-
-
-    showToast(
-        "บันทึกคำตอบเรียบร้อยแล้ว"
-    );
-
-}
 
 
 /* =====================================================
