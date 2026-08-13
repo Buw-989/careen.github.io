@@ -1,27 +1,403 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="th">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <title>เส้นทางอาชีพ | Career Path</title>
 
-    <meta
-      name="description"
-      content="Prototype ระบบเส้นทางอาชีพและการพัฒนาทักษะ"
-    />
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <title>Career Path Prototype</title>
-  </head>
+<body>
 
-  <body>
-    <div id="root"></div>
+    <main class="container">
 
-    <script
-      type="module"
-      src="/src/main.jsx"
-    ></script>
-  </body>
+        <!-- =========================
+             Header
+        ========================== -->
+        <section class="page-header">
+
+            <div>
+                <h1>เส้นทางอาชีพ</h1>
+                <p>เริ่มต้นเส้นทางอาชีพของคุณทีละขั้นตอน</p>
+            </div>
+
+            <button class="history-btn" onclick="showHistory()">
+                <span class="history-icon">↶</span>
+                ดูประวัติการทำรายการ
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             Statistics
+        ========================== -->
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    👥
+                </div>
+
+                <div>
+                    <div class="stat-number">1,256</div>
+                    <div class="stat-label">ผู้ใช้งานทั้งหมด</div>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    💼
+                </div>
+
+                <div>
+                    <div class="stat-number">327</div>
+                    <div class="stat-label">ตำแหน่งที่เปิดรับ</div>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    📋
+                </div>
+
+                <div>
+                    <div class="stat-number">842</div>
+                    <div class="stat-label">ผู้ทำแบบทดสอบผ่าน</div>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    👤
+                </div>
+
+                <div>
+                    <div class="stat-number">215</div>
+                    <div class="stat-label">ผู้สมัครที่ได้รับภาษณ์</div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Career Path
+        ========================== -->
+        <section class="career-panel">
+
+            <div class="panel-title">
+                <h2>ขั้นตอนเส้นทางอาชีพของคุณ</h2>
+            </div>
+
+
+            <!-- Progress Line -->
+            <div class="progress-area">
+
+                <div class="progress-line"></div>
+
+                <div class="progress-steps">
+
+                    <div class="number active">1</div>
+
+                    <div class="arrow">›</div>
+
+                    <div class="number active">2</div>
+
+                    <div class="arrow">›</div>
+
+                    <div class="number active">3</div>
+
+                    <div class="arrow">›</div>
+
+                    <div class="number active current">4</div>
+
+                    <div class="arrow">›</div>
+
+                    <div class="number active">5</div>
+
+                    <div class="arrow">›</div>
+
+                    <div class="number active">6</div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Cards -->
+            <div class="career-cards">
+
+
+                <!-- Card 1 -->
+                <div class="career-card">
+
+                    <h3>เลือกสายอาชีพ</h3>
+
+                    <p>
+                        เลือกสายอาชีพที่<br>
+                        คุณสนใจ
+                    </p>
+
+                    <div class="illustration">
+                        <div class="person">👨🏻‍💻</div>
+                        <div class="bubble bubble-1">⌘</div>
+                        <div class="bubble bubble-2">📊</div>
+                        <div class="bubble bubble-3">●</div>
+                    </div>
+
+                    <div class="status done">
+
+                        <span class="status-icon">✓</span>
+
+                        <div>
+                            <strong>เสร็จสิ้น</strong>
+                            <small>12 มิ.ย. 2567</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Card 2 -->
+                <div class="career-card">
+
+                    <h3>เรียนรู้สายอาชีพ</h3>
+
+                    <p>
+                        เรียนรู้ความรู้และทักษะ<br>
+                        ในสายอาชีพนั้น
+                    </p>
+
+                    <div class="illustration book">
+                        📖
+                        <span>💡</span>
+                    </div>
+
+                    <div class="status done">
+
+                        <span class="status-icon">✓</span>
+
+                        <div>
+                            <strong>เสร็จสิ้น</strong>
+                            <small>15 มิ.ย. 2567</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Card 3 -->
+                <div class="career-card">
+
+                    <h3>ผ่านการทดสอบ<br>Certificate</h3>
+
+                    <p>
+                        ทดสอบความรู้เพื่อรับ<br>
+                        ใบรับรองสายอาชีพ
+                    </p>
+
+                    <div class="illustration certificate">
+                        📜
+                    </div>
+
+                    <div class="status done">
+
+                        <span class="status-icon">✓</span>
+
+                        <div>
+                            <strong>เสร็จสิ้น</strong>
+                            <small>18 มิ.ย. 2567</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Card 4 -->
+                <div class="career-card current-card">
+
+                    <h3>Career Path</h3>
+
+                    <p>
+                        ข้อมูลเส้นทางการเติบโต<br>
+                        ในสายอาชีพ
+                    </p>
+
+                    <div class="illustration route">
+                        <div class="route-line"></div>
+                        <div class="route-dot dot1"></div>
+                        <div class="route-dot dot2"></div>
+                        <div class="route-dot dot3"></div>
+                        <div class="location">●</div>
+                    </div>
+
+                    <div class="status progress">
+
+                        <span class="progress-circle"></span>
+
+                        <div>
+                            <strong>กำลังดำเนินการ</strong>
+                            <small>70%</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Card 5 -->
+                <div class="career-card">
+
+                    <h3>ทดสอบพฤติกรรม<br>และจรรยาบรรณ</h3>
+
+                    <p>
+                        ประเมินพฤติกรรมและ<br>
+                        จรรยาบรรณในสายอาชีพ
+                    </p>
+
+                    <div class="illustration brain">
+                        🧠
+                    </div>
+
+                    <div class="status waiting">
+
+                        <span class="empty-circle"></span>
+
+                        <div>
+                            <strong>ยังไม่เริ่มต้น</strong>
+                            <small>0%</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Card 6 -->
+                <div class="career-card">
+
+                    <h3>ตำแหน่งเพิ่มเติม</h3>
+
+                    <p>
+                        ค้นหาตำแหน่งงาน<br>
+                        ที่เหมาะสมเพิ่มเติม
+                    </p>
+
+                    <div class="illustration trophy">
+                        🏆
+                    </div>
+
+                    <div class="status waiting">
+
+                        <span class="empty-circle"></span>
+
+                        <div>
+                            <strong>ยังไม่เริ่มต้น</strong>
+                            <small>0%</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             Footer
+        ========================== -->
+
+        <section class="bottom-message">
+
+            <div class="message-icon">
+                ✨
+            </div>
+
+            <div>
+                <h3>
+                    ทำตามขั้นตอนทั้งหมดเพื่อปลดล็อกโอกาสในสายอาชีพของคุณ
+                </h3>
+
+                <p>
+                    เมื่อทำครบทุกขั้นตอน คุณจะได้รับคำแนะนำตำแหน่งงานที่เหมาะสม
+                    และโอกาสการเติบโตในสายอาชีพ
+                </p>
+            </div>
+
+        </section>
+
+
+        <footer>
+            © 2024 prototype ระบบเส้นทางอาชีพและการพัฒนาทักษะ
+            <span>นโยบายความเป็นส่วนตัว</span>
+            <span>เงื่อนไขการใช้งาน</span>
+        </footer>
+
+    </main>
+
+
+    <!-- Modal ประวัติ -->
+    <div id="historyModal" class="modal">
+
+        <div class="modal-box">
+
+            <button class="close" onclick="closeHistory()">×</button>
+
+            <h2>ประวัติการทำรายการ</h2>
+
+            <div class="history-item">
+                <span>✓</span>
+                <div>
+                    <strong>เลือกสายอาชีพ</strong>
+                    <small>12 มิ.ย. 2567</small>
+                </div>
+            </div>
+
+            <div class="history-item">
+                <span>✓</span>
+                <div>
+                    <strong>เรียนรู้สายอาชีพ</strong>
+                    <small>15 มิ.ย. 2567</small>
+                </div>
+            </div>
+
+            <div class="history-item">
+                <span>✓</span>
+                <div>
+                    <strong>Certificate</strong>
+                    <small>18 มิ.ย. 2567</small>
+                </div>
+            </div>
+
+            <button class="close-btn" onclick="closeHistory()">
+                ปิด
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
 </html>
