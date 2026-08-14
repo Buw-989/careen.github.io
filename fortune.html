@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>🔮 ดูดวงสายอาชีพ</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family:
+                Arial,
+                "Noto Sans Thai",
+                sans-serif;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(0, 217, 255, 0.25),
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at 80% 80%,
+                    rgba(0, 102, 255, 0.30),
+                    transparent 40%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #03152f,
+                    #063d72,
+                    #071d46
+                );
+
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+
+            padding: 20px;
+
+            text-align: center;
+
+            border-bottom:
+                1px solid
+                rgba(0, 220, 255, .25);
+
+            background:
+                rgba(0, 20, 50, .65);
+
+            backdrop-filter:
+                blur(15px);
+
+        }
+
+
+        header h1 {
+
+            margin: 0;
+
+            color: #75efff;
+
+            text-shadow:
+                0 0 15px
+                rgba(0, 225, 255, .7);
+
+        }
+
+
+        header p {
+
+            margin:
+                8px 0 0;
+
+            color: #9bc9df;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back-button {
+
+            position: absolute;
+
+            left: 20px;
+
+            top: 20px;
+
+            padding:
+                9px 16px;
+
+            border-radius: 10px;
+
+            border:
+                1px solid
+                rgba(0, 220, 255, .4);
+
+            background:
+                rgba(0, 120, 255, .15);
+
+            color: white;
+
+            cursor: pointer;
+
+        }
+
+
+        .back-button:hover {
+
+            background:
+                rgba(0, 200, 255, .25);
+
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .container {
+
+            width: 90%;
+
+            max-width: 850px;
+
+            margin:
+                50px auto;
+
+            text-align: center;
+
+        }
+
+
+        .fortune-card {
+
+            padding: 40px 25px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(4, 52, 100, .85),
+                    rgba(2, 20, 50, .9)
+                );
+
+            border:
+                1px solid
+                rgba(0, 220, 255, .3);
+
+            box-shadow:
+                0 0 40px
+                rgba(0, 200, 255, .15);
+
+            backdrop-filter:
+                blur(15px);
+
+        }
+
+
+        /* =========================
+           ORB
+        ========================= */
+
+        .orb {
+
+            width: 130px;
+
+            height: 130px;
+
+            margin:
+                0 auto 25px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 55px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #00eaff,
+                    #0077ff 50%,
+                    #031b50
+                );
+
+            box-shadow:
+                0 0 25px #00d9ff,
+                0 0 70px
+                rgba(0, 217, 255, .4);
+
+            animation:
+                floating 3s infinite ease-in-out;
+
+        }
+
+
+        @keyframes floating {
+
+            0%,100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-10px);
+            }
+
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .random-button {
+
+            margin-top: 20px;
+
+            padding:
+                15px 30px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0066ff,
+                    #00d9ff
+                );
+
+            box-shadow:
+                0 0 25px
+                rgba(0, 217, 255, .35);
+
+            transition: .2s;
+
+        }
+
+
+        .random-button:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 0 35px
+                rgba(0, 217, 255, .6);
+
+        }
+
+
+        /* =========================
+           RESULT
+        ========================= */
+
+        #result {
+
+            margin-top: 30px;
+
+        }
+
+
+        .career-result {
+
+            padding: 25px;
+
+            border-radius: 18px;
+
+            background:
+                rgba(0, 140, 255, .10);
+
+            border:
+                1px solid
+                rgba(0, 220, 255, .35);
+
+            animation:
+                appear .5s ease;
+
+        }
+
+
+        @keyframes appear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(15px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        .career-icon {
+
+            font-size: 55px;
+
+        }
+
+
+        .career-name {
+
+            margin:
+                10px 0;
+
+            font-size: 28px;
+
+            color: #72efff;
+
+            text-shadow:
+                0 0 15px
+                rgba(0, 220, 255, .5);
+
+        }
+
+
+        .career-description {
+
+            color: #a8d4e8;
+
+            line-height: 1.7;
+
+        }
+
+
+        .random-again {
+
+            margin-top: 20px;
+
+            padding:
+                10px 20px;
+
+            border-radius: 10px;
+
+            border:
+                1px solid
+                #00d9ff;
+
+            background:
+                transparent;
+
+            color: #72efff;
+
+            cursor: pointer;
+
+        }
+
+
+        .random-again:hover {
+
+            background:
+                rgba(0, 217, 255, .15);
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width:600px) {
+
+            .back-button {
+
+                position: static;
+
+                margin-bottom: 10px;
+
+            }
+
+            header {
+
+                padding-top: 15px;
+
+            }
+
+            .container {
+
+                margin-top: 30px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <button
+        class="back-button"
+        onclick="goBack()">
+
+        ← กลับ
+
+    </button>
+
+
+    <h1>
+        🔮 ดูดวงสายอาชีพ
+    </h1>
+
+
+    <p>
+        สุ่มค้นหาสายอาชีพจาก 30 อาชีพทั่วโลก
+    </p>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <div class="fortune-card">
+
+
+        <div class="orb">
+            🔮
+        </div>
+
+
+        <h2>
+            ค้นหาสายอาชีพของคุณ
+        </h2>
+
+
+        <p>
+            ให้ระบบสุ่มสายอาชีพ
+            เพื่อค้นหาอาชีพที่น่าสนใจสำหรับคุณ
+        </p>
+
+
+        <button
+            class="random-button"
+            onclick="randomCareer()">
+
+            🔮 สุ่มสายอาชีพ
+
+        </button>
+
+
+        <div id="result">
+
+            <p>
+                ✨ กดปุ่มเพื่อเริ่มสุ่มสายอาชีพ
+            </p>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<script>
+
+
+/* ==========================================
+   30 GLOBAL CAREERS
+========================================== */
+
+const careers = [
+
+    {
+        name: "Software Developer",
+        icon: "💻",
+        description:
+        "พัฒนาโปรแกรมและระบบซอฟต์แวร์"
+    },
+
+    {
+        name: "Data Scientist",
+        icon: "📊",
+        description:
+        "วิเคราะห์ข้อมูลและพัฒนาโมเดลข้อมูล"
+    },
+
+    {
+        name: "Artificial Intelligence Engineer",
+        icon: "🤖",
+        description:
+        "พัฒนาเทคโนโลยีปัญญาประดิษฐ์"
+    },
+
+    {
+        name: "Cybersecurity Specialist",
+        icon: "🔐",
+        description:
+        "ดูแลความปลอดภัยของระบบและข้อมูล"
+    },
+
+    {
+        name: "UX/UI Designer",
+        icon: "🎨",
+        description:
+        "ออกแบบประสบการณ์และส่วนติดต่อผู้ใช้งาน"
+    },
+
+    {
+        name: "Digital Marketing Specialist",
+        icon: "📱",
+        description:
+        "วางแผนการตลาดผ่านช่องทางดิจิทัล"
+    },
+
+    {
+        name: "Business Analyst",
+        icon: "📈",
+        description:
+        "วิเคราะห์ธุรกิจและพัฒนาแนวทางปรับปรุงองค์กร"
+    },
+
+    {
+        name: "Project Manager",
+        icon: "📋",
+        description:
+        "บริหารโครงการ ทีมงาน และทรัพยากร"
+    },
+
+    {
+        name: "Financial Analyst",
+        icon: "💰",
+        description:
+        "วิเคราะห์ข้อมูลทางการเงินและการลงทุน"
+    },
+
+    {
+        name: "Accountant",
+        icon: "🧾",
+        description:
+        "จัดทำและวิเคราะห์ข้อมูลบัญชี"
+    },
+
+    {
+        name: "Doctor",
+        icon: "👨‍⚕️",
+        description:
+        "ดูแลและรักษาผู้ป่วย"
+    },
+
+    {
+        name: "Nurse",
+        icon: "👩‍⚕️",
+        description:
+        "ดูแลผู้ป่วยและสนับสนุนการรักษา"
+    },
+
+    {
+        name: "Pharmacist",
+        icon: "💊",
+        description:
+        "ดูแลและให้คำแนะนำเกี่ยวกับยา"
+    },
+
+    {
+        name: "Psychologist",
+        icon: "🧠",
+        description:
+        "ให้คำปรึกษาและศึกษาพฤติกรรมมนุษย์"
+    },
+
+    {
+        name: "Teacher",
+        icon: "👨‍🏫",
+        description:
+        "ถ่ายทอดความรู้และพัฒนาผู้เรียน"
+    },
+
+    {
+        name: "Lawyer",
+        icon: "⚖️",
+        description:
+        "ให้คำปรึกษาและดำเนินงานด้านกฎหมาย"
+    },
+
+    {
+        name: "Architect",
+        icon: "🏛️",
+        description:
+        "ออกแบบอาคารและพื้นที่"
+    },
+
+    {
+        name: "Civil Engineer",
+        icon: "🏗️",
+        description:
+        "ออกแบบและพัฒนาโครงสร้างพื้นฐาน"
+    },
+
+    {
+        name: "Mechanical Engineer",
+        icon: "⚙️",
+        description:
+        "ออกแบบและพัฒนาเครื่องจักร"
+    },
+
+    {
+        name: "Electrical Engineer",
+        icon: "⚡",
+        description:
+        "ออกแบบระบบไฟฟ้าและอุปกรณ์อิเล็กทรอนิกส์"
+    },
+
+    {
+        name: "Robotics Engineer",
+        icon: "🦾",
+        description:
+        "ออกแบบและพัฒนาหุ่นยนต์"
+    },
+
+    {
+        name: "Environmental Scientist",
+        icon: "🌱",
+        description:
+        "ศึกษาและแก้ไขปัญหาสิ่งแวดล้อม"
+    },
+
+    {
+        name: "Chef",
+        icon: "👨‍🍳",
+        description:
+        "สร้างสรรค์และประกอบอาหาร"
+    },
+
+    {
+        name: "Graphic Designer",
+        icon: "🖌️",
+        description:
+        "สร้างสรรค์งานออกแบบกราฟิก"
+    },
+
+    {
+        name: "Photographer",
+        icon: "📷",
+        description:
+        "สร้างสรรค์ภาพถ่ายเพื่อการสื่อสาร"
+    },
+
+    {
+        name: "Film Director",
+        icon: "🎬",
+        description:
+        "กำกับภาพยนตร์และงานวิดีโอ"
+    },
+
+    {
+        name: "Game Developer",
+        icon: "🎮",
+        description:
+        "พัฒนาเกมและประสบการณ์ Interactive"
+    },
+
+    {
+        name: "Entrepreneur",
+        icon: "🚀",
+        description:
+        "สร้างและบริหารธุรกิจ"
+    },
+
+    {
+        name: "Pilot",
+        icon: "✈️",
+        description:
+        "ควบคุมและปฏิบัติการบิน"
+    },
+
+    {
+        name: "Translator",
+        icon: "🌍",
+        description:
+        "แปลภาษาและช่วยสื่อสารระหว่างวัฒนธรรม"
+    }
+
+];
+
+
+
+/* ==========================================
+   RANDOM CAREER
+========================================== */
+
+function randomCareer() {
+
+
+    const randomIndex =
+        Math.floor(
+            Math.random() *
+            careers.length
+        );
+
+
+    const career =
+        careers[randomIndex];
+
+
+    document.getElementById(
+        "result"
+    ).innerHTML = `
+
+        <div class="career-result">
+
+            <div class="career-icon">
+
+                ${career.icon}
+
+            </div>
+
+
+            <div class="career-name">
+
+                ${career.name}
+
+            </div>
+
+
+            <div class="career-description">
+
+                ${career.description}
+
+            </div>
+
+
+            <button
+                class="random-again"
+                onclick="randomCareer()">
+
+                🔄 สุ่มใหม่
+
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+
+/* ==========================================
+   BACK
+========================================== */
+
+function goBack() {
+
+    history.back();
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
