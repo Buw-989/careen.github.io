@@ -8,18 +8,20 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>
-Career Path Dashboard
-</title>
+<title>Career Path Dashboard</title>
 
 <style>
 
 /* =====================================================
-   RESET
+   HOLOGRAM BLUE THEME
 ===================================================== */
 
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -31,15 +33,31 @@ body {
         "Noto Sans Thai",
         sans-serif;
 
-    background: #f5f6fb;
+    color: #e8f7ff;
 
-    color: #1f2937;
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(0, 191, 255, .18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(0, 102, 255, .16),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #03152f,
+            #061f43,
+            #03152f
+        );
+
+    min-height: 100vh;
 }
 
 button {
-
     font-family: inherit;
-
 }
 
 
@@ -62,28 +80,41 @@ button {
 
 .sidebar {
 
-    width: 250px;
+    width: 260px;
 
     min-height: 100vh;
 
-    background: white;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5, 31, 67, .97),
+            rgba(2, 20, 48, .98)
+        );
 
     border-right:
-        1px solid #e5e7eb;
+        1px solid rgba(0, 191, 255, .35);
 
     padding: 22px 15px;
 
     position: fixed;
 
     left: 0;
-
     top: 0;
-
     bottom: 0;
 
     overflow-y: auto;
 
+    box-shadow:
+        8px 0 35px
+        rgba(0, 153, 255, .12);
+
+    z-index: 50;
 }
+
+
+/* =====================================================
+   LOGO
+===================================================== */
 
 .logo {
 
@@ -94,11 +125,15 @@ button {
 
 .logo-title {
 
-    font-size: 16px;
+    font-size: 17px;
 
     font-weight: 800;
 
-    color: #4338ca;
+    color: #57ddff;
+
+    text-shadow:
+        0 0 10px
+        rgba(0, 204, 255, .8);
 
 }
 
@@ -106,26 +141,34 @@ button {
 
     font-size: 12px;
 
-    color: #64748b;
+    color: #7fb9d8;
 
-    margin-top: 4px;
+    margin-top: 5px;
 
 }
 
 
-/* Sidebar Dashboard */
+/* =====================================================
+   DASHBOARD MENU
+===================================================== */
 
 .dashboard-menu {
 
     width: 100%;
 
-    border: none;
+    border:
+        1px solid rgba(0, 204, 255, .35);
 
-    background: #f0efff;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 153, 255, .20),
+            rgba(0, 238, 255, .08)
+        );
 
-    color: #4f46e5;
+    color: #5ee7ff;
 
-    padding: 12px;
+    padding: 13px;
 
     border-radius: 10px;
 
@@ -137,10 +180,28 @@ button {
 
     margin-bottom: 22px;
 
+    box-shadow:
+        0 0 15px
+        rgba(0, 191, 255, .12);
+
+    transition: .2s;
+}
+
+.dashboard-menu:hover {
+
+    background:
+        rgba(0, 191, 255, .20);
+
+    box-shadow:
+        0 0 22px
+        rgba(0, 204, 255, .35);
+
 }
 
 
-/* Section */
+/* =====================================================
+   MENU SECTION
+===================================================== */
 
 .menu-section {
 
@@ -154,9 +215,9 @@ button {
 
     font-weight: 800;
 
-    color: #94a3b8;
+    color: #5591b7;
 
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 
     padding:
         0 10px 8px;
@@ -164,7 +225,9 @@ button {
 }
 
 
-/* Menu */
+/* =====================================================
+   MENU ITEM
+===================================================== */
 
 .menu-item {
 
@@ -180,9 +243,9 @@ button {
 
     background: transparent;
 
-    color: #64748b;
+    color: #8eb9d1;
 
-    padding: 10px;
+    padding: 11px 10px;
 
     border-radius: 9px;
 
@@ -192,7 +255,7 @@ button {
 
     font-size: 13px;
 
-    margin-bottom: 3px;
+    margin-bottom: 4px;
 
     transition: .2s;
 
@@ -200,19 +263,35 @@ button {
 
 .menu-item:hover {
 
-    background: #f8f7ff;
+    background:
+        rgba(0, 191, 255, .10);
 
-    color: #4f46e5;
+    color: #5ee7ff;
+
+    box-shadow:
+        inset 3px 0 0 #00cfff,
+        0 0 15px
+        rgba(0, 191, 255, .08);
 
 }
 
 .menu-item.active {
 
-    background: #efedff;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 191, 255, .20),
+            rgba(0, 102, 255, .10)
+        );
 
-    color: #4f46e5;
+    color: #65eaff;
 
     font-weight: 700;
+
+    box-shadow:
+        inset 3px 0 0 #00d9ff,
+        0 0 18px
+        rgba(0, 191, 255, .14);
 
 }
 
@@ -221,6 +300,8 @@ button {
     width: 22px;
 
     text-align: center;
+
+    font-size: 16px;
 
 }
 
@@ -231,9 +312,10 @@ button {
 
 .main {
 
-    margin-left: 250px;
+    margin-left: 260px;
 
-    width: calc(100% - 250px);
+    width:
+        calc(100% - 260px);
 
     min-height: 100vh;
 
@@ -248,10 +330,14 @@ button {
 
     height: 68px;
 
-    background: white;
+    background:
+        rgba(3, 28, 60, .85);
+
+    backdrop-filter:
+        blur(14px);
 
     border-bottom:
-        1px solid #e5e7eb;
+        1px solid rgba(0, 204, 255, .25);
 
     display: flex;
 
@@ -274,9 +360,13 @@ button {
 
 .notification button {
 
-    border: none;
+    border:
+        1px solid rgba(0, 204, 255, .25);
 
-    background: #f8fafc;
+    background:
+        rgba(0, 153, 255, .10);
+
+    color: #65eaff;
 
     width: 38px;
 
@@ -295,15 +385,13 @@ button {
     position: absolute;
 
     top: -3px;
-
     right: -3px;
 
-    background: #ef4444;
+    background: #00bfff;
 
-    color: white;
+    color: #00152e;
 
     width: 17px;
-
     height: 17px;
 
     border-radius: 50%;
@@ -315,6 +403,8 @@ button {
     align-items: center;
 
     justify-content: center;
+
+    font-weight: 800;
 
 }
 
@@ -331,12 +421,16 @@ button {
 .profile-avatar {
 
     width: 38px;
-
     height: 38px;
 
     border-radius: 50%;
 
-    background: #e9e7ff;
+    background:
+        linear-gradient(
+            135deg,
+            #00bfff,
+            #0066ff
+        );
 
     display: flex;
 
@@ -346,6 +440,10 @@ button {
 
     font-size: 19px;
 
+    box-shadow:
+        0 0 18px
+        rgba(0, 191, 255, .45);
+
 }
 
 .profile-name {
@@ -354,13 +452,15 @@ button {
 
     font-weight: 700;
 
+    color: #e8faff;
+
 }
 
 .profile-role {
 
     font-size: 11px;
 
-    color: #94a3b8;
+    color: #71a9c6;
 
 }
 
@@ -392,7 +492,13 @@ button {
 
     margin: 0;
 
-    font-size: 27px;
+    font-size: 28px;
+
+    color: #e9fbff;
+
+    text-shadow:
+        0 0 15px
+        rgba(0, 204, 255, .35);
 
 }
 
@@ -400,7 +506,7 @@ button {
 
     margin: 7px 0 0;
 
-    color: #64748b;
+    color: #8ab7cf;
 
     font-size: 14px;
 
@@ -409,9 +515,10 @@ button {
 .history-button {
 
     border:
-        1px solid #e5e7eb;
+        1px solid rgba(0, 204, 255, .25);
 
-    background: white;
+    background:
+        rgba(0, 153, 255, .08);
 
     padding:
         10px 16px;
@@ -420,7 +527,7 @@ button {
 
     cursor: pointer;
 
-    color: #64748b;
+    color: #65ddff;
 
 }
 
@@ -444,10 +551,15 @@ button {
 
 .stat-card {
 
-    background: white;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7, 46, 88, .85),
+            rgba(3, 28, 63, .92)
+        );
 
     border:
-        1px solid #e5e7eb;
+        1px solid rgba(0, 191, 255, .22);
 
     border-radius: 13px;
 
@@ -459,12 +571,15 @@ button {
 
     gap: 14px;
 
+    box-shadow:
+        0 0 20px
+        rgba(0, 153, 255, .08);
+
 }
 
 .stat-icon {
 
     width: 48px;
-
     height: 48px;
 
     border-radius: 11px;
@@ -477,6 +592,11 @@ button {
 
     font-size: 21px;
 
+    background:
+        rgba(0, 191, 255, .12);
+
+    color: #65eaff;
+
 }
 
 .stat-number {
@@ -485,13 +605,15 @@ button {
 
     font-weight: 800;
 
+    color: #e8fbff;
+
 }
 
 .stat-label {
 
     font-size: 12px;
 
-    color: #64748b;
+    color: #75a8c0;
 
     margin-top: 3px;
 
@@ -499,19 +621,28 @@ button {
 
 
 /* =====================================================
-   CAREER CARDS
+   PANELS
 ===================================================== */
 
 .panel {
 
-    background: white;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7, 40, 79, .90),
+            rgba(2, 24, 55, .94)
+        );
 
     border:
-        1px solid #e5e7eb;
+        1px solid rgba(0, 191, 255, .22);
 
     border-radius: 15px;
 
     padding: 22px;
+
+    box-shadow:
+        0 0 35px
+        rgba(0, 119, 255, .08);
 
 }
 
@@ -534,15 +665,22 @@ button {
 
     font-weight: 800;
 
+    color: #e8fbff;
+
 }
 
 .progress-summary {
 
     font-size: 13px;
 
-    color: #64748b;
+    color: #70b6d6;
 
 }
+
+
+/* =====================================================
+   CAREER CARDS
+===================================================== */
 
 .career-grid {
 
@@ -560,7 +698,7 @@ button {
     min-height: 260px;
 
     border:
-        1px solid #e5e7eb;
+        1px solid rgba(0, 191, 255, .20);
 
     border-radius: 14px;
 
@@ -574,10 +712,14 @@ button {
 
     transition:
         transform .2s,
-        box-shadow .2s,
-        border .2s;
+        box-shadow .2s;
 
-    background: white;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8, 53, 100, .82),
+            rgba(3, 27, 59, .92)
+        );
 
 }
 
@@ -586,11 +728,12 @@ button {
     transform:
         translateY(-4px);
 
-    border-color: #9b92ff;
+    border-color:
+        rgba(0, 220, 255, .70);
 
     box-shadow:
-        0 12px 30px
-        rgba(79,70,229,.10);
+        0 12px 35px
+        rgba(0, 191, 255, .20);
 
 }
 
@@ -602,13 +745,15 @@ button {
 
     line-height: 1.45;
 
+    color: #eafcff;
+
 }
 
 .career-card p {
 
     font-size: 12px;
 
-    color: #64748b;
+    color: #79abc2;
 
     line-height: 1.6;
 
@@ -628,6 +773,12 @@ button {
 
     margin-top: 10px;
 
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(0, 204, 255, .55)
+        );
+
 }
 
 .status {
@@ -637,7 +788,6 @@ button {
     bottom: 15px;
 
     left: 17px;
-
     right: 17px;
 
     display: flex;
@@ -651,14 +801,14 @@ button {
 .status-icon {
 
     width: 28px;
-
     height: 28px;
 
     border-radius: 50%;
 
-    background: #dcfce7;
+    background:
+        rgba(0, 220, 255, .15);
 
-    color: #16a34a;
+    color: #57e8ff;
 
     display: flex;
 
@@ -676,11 +826,13 @@ button {
 
     font-size: 12px;
 
+    color: #dffaff;
+
 }
 
 .status small {
 
-    color: #94a3b8;
+    color: #6596ad;
 
     font-size: 10px;
 
@@ -689,27 +841,27 @@ button {
 .progress-circle {
 
     width: 28px;
-
     height: 28px;
 
     border-radius: 50%;
 
     border:
-        4px solid #e0e7ff;
+        4px solid
+        rgba(0, 191, 255, .12);
 
     border-top-color:
-        #6366f1;
+        #00d9ff;
 
 }
 
 .empty-circle {
 
     width: 28px;
-
     height: 28px;
 
     border:
-        2px solid #d1d5db;
+        2px solid
+        rgba(0, 191, 255, .25);
 
     border-radius: 50%;
 
@@ -724,7 +876,16 @@ button {
 
     margin-top: 18px;
 
-    background: #f0efff;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 191, 255, .13),
+            rgba(0, 102, 255, .08)
+        );
+
+    border:
+        1px solid
+        rgba(0, 191, 255, .20);
 
     border-radius: 13px;
 
@@ -741,12 +902,12 @@ button {
 .info-icon {
 
     width: 42px;
-
     height: 42px;
 
     border-radius: 50%;
 
-    background: #ddd9ff;
+    background:
+        rgba(0, 191, 255, .15);
 
     display: flex;
 
@@ -768,7 +929,7 @@ button {
 
     margin: 0;
 
-    color: #64748b;
+    color: #78a9c0;
 
     font-size: 12px;
 
@@ -794,11 +955,13 @@ button {
 .back-button {
 
     border:
-        1px solid #e5e7eb;
+        1px solid
+        rgba(0, 191, 255, .25);
 
-    background: white;
+    background:
+        rgba(0, 153, 255, .08);
 
-    color: #4f46e5;
+    color: #5ee7ff;
 
     padding:
         10px 17px;
@@ -815,13 +978,14 @@ button {
 
 .back-button:hover {
 
-    background: #efedff;
+    background:
+        rgba(0, 191, 255, .18);
 
 }
 
 
 /* =====================================================
-   SUB PAGE HEADER
+   SUB HEADER
 ===================================================== */
 
 .sub-header {
@@ -836,11 +1000,13 @@ button {
 
     font-size: 28px;
 
+    color: #e9fbff;
+
 }
 
 .sub-header p {
 
-    color: #64748b;
+    color: #76a9c1;
 
     margin-top: 7px;
 
@@ -865,9 +1031,15 @@ button {
 .career-option {
 
     border:
-        1px solid #e5e7eb;
+        1px solid
+        rgba(0, 191, 255, .22);
 
-    background: white;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7, 45, 86, .9),
+            rgba(3, 26, 58, .95)
+        );
 
     border-radius: 15px;
 
@@ -886,7 +1058,12 @@ button {
     transform:
         translateY(-4px);
 
-    border-color: #6366f1;
+    border-color:
+        #00d9ff;
+
+    box-shadow:
+        0 0 25px
+        rgba(0, 191, 255, .20);
 
 }
 
@@ -904,11 +1081,13 @@ button {
 
     font-size: 16px;
 
+    color: #e8fbff;
+
 }
 
 .career-option p {
 
-    color: #64748b;
+    color: #76a9c1;
 
     font-size: 12px;
 
@@ -934,9 +1113,11 @@ button {
 .lesson-tab {
 
     border:
-        1px solid #e5e7eb;
+        1px solid
+        rgba(0, 191, 255, .25);
 
-    background: white;
+    background:
+        rgba(0, 153, 255, .08);
 
     padding:
         11px 17px;
@@ -945,17 +1126,27 @@ button {
 
     cursor: pointer;
 
-    color: #64748b;
+    color: #7cb0c9;
 
 }
 
 .lesson-tab.active {
 
-    background: #4f46e5;
+    background:
+        linear-gradient(
+            135deg,
+            #0077ff,
+            #00cfff
+        );
 
     color: white;
 
-    border-color: #4f46e5;
+    border-color:
+        #00d9ff;
+
+    box-shadow:
+        0 0 18px
+        rgba(0, 191, 255, .30);
 
 }
 
@@ -969,10 +1160,11 @@ button {
 
 .exercise-box {
 
-    background: #f3f1ff;
+    background:
+        rgba(0, 191, 255, .08);
 
     border-left:
-        4px solid #6366f1;
+        4px solid #00cfff;
 
     border-radius: 8px;
 
@@ -984,7 +1176,7 @@ button {
 
 .exercise-box p {
 
-    color: #64748b;
+    color: #79abc2;
 
     line-height: 1.7;
 
@@ -1009,10 +1201,12 @@ button {
 .code-panel,
 .preview-panel {
 
-    background: white;
+    background:
+        #061b36;
 
     border:
-        1px solid #e5e7eb;
+        1px solid
+        rgba(0, 191, 255, .20);
 
     border-radius: 13px;
 
@@ -1035,18 +1229,24 @@ button {
         0 14px;
 
     border-bottom:
-        1px solid #e5e7eb;
+        1px solid
+        rgba(0, 191, 255, .20);
 
-    background: #fafafa;
+    background:
+        rgba(0, 153, 255, .08);
 
 }
 
 .code-header button {
 
     border:
-        1px solid #d9dce5;
+        1px solid
+        rgba(0, 191, 255, .25);
 
-    background: white;
+    background:
+        rgba(0, 153, 255, .08);
+
+    color: #8bd9ee;
 
     padding:
         7px 12px;
@@ -1059,11 +1259,17 @@ button {
 
 .code-header .run {
 
-    background: #4f46e5;
+    background:
+        linear-gradient(
+            135deg,
+            #0066ff,
+            #00cfff
+        );
 
     color: white;
 
-    border-color: #4f46e5;
+    border-color:
+        #00d9ff;
 
 }
 
@@ -1083,9 +1289,10 @@ button {
 
     padding: 18px;
 
-    background: #111827;
+    background:
+        #020b19;
 
-    color: #e5e7eb;
+    color: #bdefff;
 
     font-family:
         Consolas,
@@ -1112,6 +1319,105 @@ button {
 
 
 /* =====================================================
+   CAREER TRIAL
+===================================================== */
+
+.trial-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+
+}
+
+.trial-card {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(4, 55, 105, .92),
+            rgba(2, 28, 60, .96)
+        );
+
+    border:
+        1px solid
+        rgba(0, 204, 255, .25);
+
+    border-radius: 15px;
+
+    padding: 22px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+.trial-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        #00d9ff;
+
+    box-shadow:
+        0 0 30px
+        rgba(0, 191, 255, .20);
+
+}
+
+.trial-icon {
+
+    font-size: 45px;
+
+    margin-bottom: 12px;
+
+}
+
+.trial-card h3 {
+
+    margin: 0 0 8px;
+
+    color: #e8fbff;
+
+}
+
+.trial-card p {
+
+    color: #78aac2;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+.trial-button {
+
+    margin-top: 12px;
+
+    padding: 9px 15px;
+
+    border:
+        1px solid #00cfff;
+
+    background:
+        rgba(0, 191, 255, .10);
+
+    color: #66eaff;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+
+/* =====================================================
    CERTIFICATE
 ===================================================== */
 
@@ -1121,16 +1427,26 @@ button {
 
     margin: 30px auto;
 
-    background: white;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7, 48, 91, .95),
+            rgba(3, 27, 59, .97)
+        );
 
     border:
-        1px solid #e5e7eb;
+        1px solid
+        rgba(0, 204, 255, .25);
 
     border-radius: 15px;
 
     padding: 45px;
 
     text-align: center;
+
+    box-shadow:
+        0 0 35px
+        rgba(0, 153, 255, .12);
 
 }
 
@@ -1148,7 +1464,7 @@ button {
 
 .certificate-box p {
 
-    color: #64748b;
+    color: #79abc2;
 
 }
 
@@ -1163,7 +1479,7 @@ button {
     margin:
         25px 0;
 
-    color: #64748b;
+    color: #79abc2;
 
     font-size: 13px;
 
@@ -1173,7 +1489,12 @@ button {
 
     border: none;
 
-    background: #4f46e5;
+    background:
+        linear-gradient(
+            135deg,
+            #0066ff,
+            #00cfff
+        );
 
     color: white;
 
@@ -1185,6 +1506,10 @@ button {
     cursor: pointer;
 
     font-weight: 700;
+
+    box-shadow:
+        0 0 18px
+        rgba(0, 191, 255, .25);
 
 }
 
@@ -1211,10 +1536,16 @@ button {
 
     min-width: 210px;
 
-    background: white;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7, 49, 94, .94),
+            rgba(3, 27, 59, .97)
+        );
 
     border:
-        1px solid #e5e7eb;
+        1px solid
+        rgba(0, 191, 255, .25);
 
     border-radius: 14px;
 
@@ -1227,14 +1558,18 @@ button {
 .roadmap-number {
 
     width: 42px;
-
     height: 42px;
 
     margin: auto;
 
     border-radius: 50%;
 
-    background: #4f46e5;
+    background:
+        linear-gradient(
+            135deg,
+            #0066ff,
+            #00d9ff
+        );
 
     color: white;
 
@@ -1246,11 +1581,15 @@ button {
 
     font-weight: 800;
 
+    box-shadow:
+        0 0 20px
+        rgba(0, 191, 255, .30);
+
 }
 
 .roadmap-card p {
 
-    color: #64748b;
+    color: #76a9c1;
 
     font-size: 12px;
 
@@ -1264,10 +1603,14 @@ button {
 
     height: 3px;
 
-    background: #c7c2ff;
+    background:
+        linear-gradient(
+            90deg,
+            #0066ff,
+            #00d9ff
+        );
 
 }
-
 
 
 /* =====================================================
@@ -1286,10 +1629,16 @@ button {
 
 .job-card {
 
-    background: white;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7, 48, 91, .94),
+            rgba(3, 27, 59, .97)
+        );
 
     border:
-        1px solid #e5e7eb;
+        1px solid
+        rgba(0, 191, 255, .22);
 
     border-radius: 14px;
 
@@ -1306,10 +1655,10 @@ button {
 .job-icon {
 
     width: 55px;
-
     height: 55px;
 
-    background: #efedff;
+    background:
+        rgba(0, 191, 255, .12);
 
     border-radius: 12px;
 
@@ -1339,7 +1688,7 @@ button {
 
     margin: 0 0 5px;
 
-    color: #64748b;
+    color: #76a9c1;
 
     font-size: 13px;
 
@@ -1347,7 +1696,7 @@ button {
 
 .job-info span {
 
-    color: #94a3b8;
+    color: #5c91ac;
 
     font-size: 12px;
 
@@ -1356,11 +1705,12 @@ button {
 .job-button {
 
     border:
-        1px solid #4f46e5;
+        1px solid #00cfff;
 
-    color: #4f46e5;
+    color: #5fe7ff;
 
-    background: white;
+    background:
+        rgba(0, 191, 255, .08);
 
     padding:
         9px 15px;
@@ -1368,6 +1718,81 @@ button {
     border-radius: 8px;
 
     cursor: pointer;
+
+}
+
+
+/* =====================================================
+   BEHAVIOR
+===================================================== */
+
+.question-box {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7, 48, 91, .94),
+            rgba(3, 27, 59, .97)
+        );
+
+    border:
+        1px solid
+        rgba(0, 191, 255, .22);
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+}
+
+.question-number {
+
+    color: #52ddff;
+
+    font-size: 13px;
+
+    margin-bottom: 15px;
+
+}
+
+.question-box h2 {
+
+    color: #e8fbff;
+
+}
+
+.answer {
+
+    display: block;
+
+    padding: 14px;
+
+    margin:
+        10px 0;
+
+    border:
+        1px solid
+        rgba(0, 191, 255, .18);
+
+    border-radius: 9px;
+
+    color: #9bd0e5;
+
+    cursor: pointer;
+
+}
+
+.answer:hover {
+
+    background:
+        rgba(0, 191, 255, .08);
+
+    border-color:
+        #00cfff;
 
 }
 
@@ -1384,7 +1809,12 @@ button {
 
     bottom: 25px;
 
-    background: #1f2937;
+    background:
+        linear-gradient(
+            135deg,
+            #005cff,
+            #00bfff
+        );
 
     color: white;
 
@@ -1397,6 +1827,10 @@ button {
 
     z-index: 100;
 
+    box-shadow:
+        0 0 25px
+        rgba(0, 191, 255, .35);
+
 }
 
 
@@ -1404,7 +1838,7 @@ button {
    RESPONSIVE
 ===================================================== */
 
-@media(max-width: 1100px) {
+@media(max-width:1100px) {
 
     .stat-grid {
 
@@ -1429,7 +1863,7 @@ button {
 
 }
 
-@media(max-width: 800px) {
+@media(max-width:800px) {
 
     .sidebar {
 
@@ -1452,9 +1886,15 @@ button {
 
     }
 
+    .trial-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
 }
 
-@media(max-width: 650px) {
+@media(max-width:650px) {
 
     .sidebar {
 
@@ -1521,7 +1961,6 @@ button {
 
 <body>
 
-
 <div class="app">
 
 
@@ -1535,15 +1974,17 @@ button {
     <div class="logo">
 
         <div class="logo-title">
-            prototype ระบบเส้นทางอาชีพ
+            ⚡ Career Path System
         </div>
 
         <div class="logo-subtitle">
-            และการพัฒนาทักษะ
+            ระบบเส้นทางอาชีพและการพัฒนาทักษะ
         </div>
 
     </div>
 
+
+    <!-- DASHBOARD -->
 
     <button
         class="dashboard-menu"
@@ -1554,6 +1995,8 @@ button {
     </button>
 
 
+    <!-- PROFILE -->
+
     <div class="menu-section">
 
         <div class="menu-section-title">
@@ -1561,42 +2004,50 @@ button {
         </div>
 
         <button class="menu-item">
-            👤
+            <span class="menu-icon">👤</span>
             ประวัติส่วนตัว
         </button>
 
         <button class="menu-item">
-            📞
+            <span class="menu-icon">📞</span>
             ข้อมูลติดต่อ
         </button>
 
         <button class="menu-item">
-            📄
+            <span class="menu-icon">📄</span>
             อธิบายตัวเอง
         </button>
 
-        <button class="menu-item">
-            📜
+        <button
+            class="menu-item"
+            onclick="showPage('certificate')">
+
+            <span class="menu-icon">📜</span>
             Certificate
+
         </button>
 
         <button class="menu-item">
-            📋
+            <span class="menu-icon">📋</span>
             RESUME
         </button>
 
         <button class="menu-item">
-            💬
+            <span class="menu-icon">💬</span>
             CHAT
         </button>
 
         <button class="menu-item">
-            📊
+            <span class="menu-icon">📊</span>
             สถานะ
         </button>
 
     </div>
 
+
+    <!-- =================================================
+         MAIN MENU
+    ================================================= -->
 
     <div class="menu-section">
 
@@ -1605,9 +2056,11 @@ button {
         </div>
 
 
+        <!-- 1 -->
+
         <button
             class="menu-item active"
-            onclick="window.location.href='jobs.html'">
+            onclick="showPage('career-select')">
 
             <span class="menu-icon">🧭</span>
 
@@ -1615,26 +2068,38 @@ button {
 
         </button>
 
-<button
+
+        <!-- 2 -->
+
+        <button
             class="menu-item"
-            onclick="window.location.href='career-trial.html'">
-            <span class="menu-icon">💻</span>
-            ทดลองสายอาชีพ
+            onclick="showPage('learning')">
+
+            <span class="menu-icon">💡</span>
+
+            เรียนรู้สายอาชีพ
+
         </button>
 
 
+        <!-- 3 -->
 
-
-<button
-    class="menu-item"
-    onclick="window.location.href='learning.html'">
-    <span class="menu-icon">💡</span>
-    เรียนรู้สายอาชีพ
-</button>
-
-          <button
+        <button
             class="menu-item"
-            onclick="window.location.href='certificate.html'">
+            onclick="showPage('career-trial')">
+
+            <span class="menu-icon">🧪</span>
+
+            ทดลองสายอาชีพ
+
+        </button>
+
+
+        <!-- 4 -->
+
+        <button
+            class="menu-item"
+            onclick="showPage('certificate')">
 
             <span class="menu-icon">🏆</span>
 
@@ -1643,9 +2108,11 @@ button {
         </button>
 
 
+        <!-- 5 -->
+
         <button
             class="menu-item"
-            onclick="window.location.href='psychology.html'">
+            onclick="showPage('behavior')">
 
             <span class="menu-icon">🧠</span>
 
@@ -1654,9 +2121,11 @@ button {
         </button>
 
 
+        <!-- 6 -->
+
         <button
             class="menu-item"
-            onclick="window.location.href='career-path.html'">
+            onclick="showPage('career-path')">
 
             <span class="menu-icon">🗺️</span>
 
@@ -1665,9 +2134,11 @@ button {
         </button>
 
 
+        <!-- 7 -->
+
         <button
             class="menu-item"
-            onclick="window.location.href='jobs.html'">
+            onclick="showPage('jobs')">
 
             <span class="menu-icon">💼</span>
 
@@ -1675,8 +2146,11 @@ button {
 
         </button>
 
+
     </div>
 
+
+    <!-- OTHER -->
 
     <div class="menu-section">
 
@@ -1685,18 +2159,27 @@ button {
         </div>
 
         <button class="menu-item">
-            🔮
+
+            <span class="menu-icon">🔮</span>
+
             ดูดวง
+
         </button>
 
         <button class="menu-item">
-            🌐
+
+            <span class="menu-icon">🌐</span>
+
             ข้อมูลสายงานทั่วโลก
+
         </button>
 
         <button class="menu-item">
-            🏛️
+
+            <span class="menu-icon">🏛️</span>
+
             สถาบันรับรอง/ฝึกอบรม
+
         </button>
 
     </div>
@@ -1718,7 +2201,8 @@ button {
 
     <div class="notification">
 
-        <button onclick="showToast('ไม่มีการแจ้งเตือนใหม่')">
+        <button
+            onclick="showToast('ไม่มีการแจ้งเตือนใหม่')">
 
             🔔
 
@@ -1777,7 +2261,6 @@ button {
 
         </div>
 
-
         <button
             class="history-button"
             onclick="showToast('กำลังแสดงประวัติการทำรายการ')">
@@ -1793,15 +2276,10 @@ button {
 
     <div class="stat-grid">
 
-
         <div class="stat-card">
 
-            <div
-                class="stat-icon"
-                style="background:#ede9fe;color:#7c3aed">
-
+            <div class="stat-icon">
                 👥
-
             </div>
 
             <div>
@@ -1821,12 +2299,8 @@ button {
 
         <div class="stat-card">
 
-            <div
-                class="stat-icon"
-                style="background:#e0f2fe;color:#0284c7">
-
+            <div class="stat-icon">
                 💼
-
             </div>
 
             <div>
@@ -1846,12 +2320,8 @@ button {
 
         <div class="stat-card">
 
-            <div
-                class="stat-icon"
-                style="background:#dcfce7;color:#16a34a">
-
+            <div class="stat-icon">
                 ✓
-
             </div>
 
             <div>
@@ -1871,12 +2341,8 @@ button {
 
         <div class="stat-card">
 
-            <div
-                class="stat-icon"
-                style="background:#ffedd5;color:#ea580c">
-
+            <div class="stat-icon">
                 🏆
-
             </div>
 
             <div>
@@ -1893,7 +2359,6 @@ button {
 
         </div>
 
-
     </div>
 
 
@@ -1901,19 +2366,14 @@ button {
 
     <div class="panel">
 
-
         <div class="panel-header">
 
             <div class="panel-title">
-
                 ขั้นตอนเส้นทางอาชีพของคุณ
-
             </div>
 
             <div class="progress-summary">
-
-                3/6 ขั้นตอนเสร็จสิ้น
-
+                3/7 ขั้นตอนเสร็จสิ้น
             </div>
 
         </div>
@@ -1926,7 +2386,7 @@ button {
 
             <div
                 class="career-card"
-                onclick="window.location.href='jobs.html'">
+                onclick="showPage('career-select')">
 
                 <h3>
                     เลือกสายอาชีพ
@@ -1937,7 +2397,7 @@ button {
                 </p>
 
                 <div class="illustration">
-                    👨🏻‍💻
+                    🧭
                 </div>
 
                 <div class="status">
@@ -1953,7 +2413,7 @@ button {
                         </strong>
 
                         <small>
-                            12 มิ.ย. 2567
+                            เริ่มต้น
                         </small>
 
                     </div>
@@ -1967,91 +2427,7 @@ button {
 
             <div
                 class="career-card"
-                onclick="window.location.href='career-trial.html'">
-
-                <h3>
-                    ทดลองสายอาชีพ
-                </h3>
-
-                <p>
-                    ทดลองเขียนโค้ดและสร้างระบบเบื้องต้น
-                    สำหรับสายงาน Programmer
-                </p>
-
-                <div class="illustration">
-                    💻
-                </div>
-
-                 <div class="status">
-
-                    <span class="status-icon">
-                        ✓
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            เสร็จสิ้น
-                        </strong>
-
-                        <small>
-                            18 มิ.ย. 2567
-                        </small>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            
-
-            <!-- 2 -->
-
-            <div
-                class="career-card"
-                onclick="window.location.href='certificate.html'">
-
-                <h3>
-                    ผ่านการทดสอบ Certificate
-                </h3>
-
-                <p>
-                    ทดสอบความรู้เพื่อรับใบรับรองสายอาชีพ
-                </p>
-
-                <div class="illustration">
-                    📜
-                </div>
-
-                <div class="status">
-
-                    <span class="status-icon">
-                        ✓
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            เสร็จสิ้น
-                        </strong>
-
-                        <small>
-                            18 มิ.ย. 2567
-                        </small>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-<!-- 3 -->
-
-            <div
-                class="career-card"
-                onclick="window.location.href='learning.html'">
+                onclick="showPage('learning')">
 
                 <h3>
                     เรียนรู้สายอาชีพ
@@ -2062,7 +2438,7 @@ button {
                 </p>
 
                 <div class="illustration">
-                    📖
+                    💡
                 </div>
 
                 <div class="status">
@@ -2078,7 +2454,7 @@ button {
                         </strong>
 
                         <small>
-                            18 มิ.ย. 2567
+                            เรียนรู้แล้ว
                         </small>
 
                     </div>
@@ -2087,22 +2463,23 @@ button {
 
             </div>
 
-            <!-- 4 -->
+
+            <!-- 3 -->
 
             <div
                 class="career-card"
-                onclick="window.location.href='career-path.html'">
+                onclick="showPage('career-trial')">
 
                 <h3>
-                    Career Path
+                    ทดลองสายอาชีพ
                 </h3>
 
                 <p>
-                    ข้อมูลเส้นทางการเติบโตในสายอาชีพ
+                    ทดลองทำงานจริงผ่านกิจกรรมจำลอง
                 </p>
 
                 <div class="illustration">
-                    🗺️
+                    🧪
                 </div>
 
                 <div class="status">
@@ -2127,14 +2504,54 @@ button {
             </div>
 
 
+            <!-- 4 -->
+
+            <div
+                class="career-card"
+                onclick="showPage('certificate')">
+
+                <h3>
+                    Certificate
+                </h3>
+
+                <p>
+                    ทดสอบความรู้เพื่อรับใบรับรอง
+                </p>
+
+                <div class="illustration">
+                    🏆
+                </div>
+
+                <div class="status">
+
+                    <span class="empty-circle">
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            ยังไม่เริ่มต้น
+                        </strong>
+
+                        <small>
+                            0%
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
             <!-- 5 -->
 
             <div
                 class="career-card"
-                onclick="window.location.href='psychology.html'">
+                onclick="showPage('behavior')">
 
                 <h3>
-                    ทดสอบพฤติกรรมและจรรยาบรรณ
+                    ทดสอบพฤติกรรม
                 </h3>
 
                 <p>
@@ -2171,18 +2588,58 @@ button {
 
             <div
                 class="career-card"
-                onclick="window.location.href='jobs.html'">
+                onclick="showPage('career-path')">
 
                 <h3>
-                    ตำแหน่งเพิ่มเติม
+                    Career Path
                 </h3>
 
                 <p>
-                    ค้นหาตำแหน่งงานที่เหมาะสมเพิ่มเติม
+                    ข้อมูลเส้นทางการเติบโตในสายอาชีพ
                 </p>
 
                 <div class="illustration">
-                    🏆
+                    🗺️
+                </div>
+
+                <div class="status">
+
+                    <span class="empty-circle">
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            ยังไม่เริ่มต้น
+                        </strong>
+
+                        <small>
+                            0%
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 7 -->
+
+            <div
+                class="career-card"
+                onclick="showPage('jobs')">
+
+                <h3>
+                    ตำแหน่งงานที่เหมาะสม
+                </h3>
+
+                <p>
+                    ค้นหาตำแหน่งงานที่เหมาะสมกับคุณ
+                </p>
+
+                <div class="illustration">
+                    💼
                 </div>
 
                 <div class="status">
@@ -2223,18 +2680,15 @@ button {
                 </h3>
 
                 <p>
-                    เมื่อทำครบทุกขั้นตอน
-                    คุณจะได้รับคำแนะนำตำแหน่งงานที่เหมาะสม
-                    และโอกาสการเติบโตในสายอาชีพ
+                    ทดลองสายอาชีพเพื่อค้นหาความถนัด
+                    และสร้างเส้นทางการเติบโตที่เหมาะสมกับคุณ
                 </p>
 
             </div>
 
         </div>
 
-
     </div>
-
 
 </section>
 
@@ -2246,7 +2700,6 @@ button {
 <section
     id="career-select"
     class="page sub-page">
-
 
     <button
         class="back-button"
@@ -2260,12 +2713,11 @@ button {
     <div class="sub-header">
 
         <h1>
-            เลือกสายอาชีพ
+            🧭 เลือกสายอาชีพ
         </h1>
 
         <p>
-            เลือกสายอาชีพที่คุณสนใจ
-            เพื่อสร้างเส้นทางการพัฒนาของคุณ
+            เลือกสายอาชีพที่คุณสนใจเพื่อสร้างเส้นทางการพัฒนาของคุณ
         </p>
 
     </div>
@@ -2352,7 +2804,6 @@ button {
 
     </div>
 
-
 </section>
 
 
@@ -2363,7 +2814,6 @@ button {
 <section
     id="learning"
     class="page sub-page">
-
 
     <button
         class="back-button"
@@ -2377,7 +2827,7 @@ button {
     <div class="sub-header">
 
         <h1>
-            เรียนรู้สายอาชีพ
+            💡 เรียนรู้สายอาชีพ
         </h1>
 
         <p>
@@ -2414,15 +2864,12 @@ button {
 
     <div class="panel">
 
-
         <h2>
             🧑‍💻 แบบฝึกหัดทดลองเขียนโค้ด
         </h2>
 
-
         <p>
-            ทดลองเขียนโปรแกรมเบื้องต้น
-            สำหรับสายงาน Programmer
+            ทดลองเขียนโปรแกรมเบื้องต้นสำหรับสายงาน Programmer
             และดูผลลัพธ์ได้ทันที
         </p>
 
@@ -2448,7 +2895,6 @@ button {
 
 
             <div class="code-panel">
-
 
                 <div class="code-header">
 
@@ -2478,9 +2924,9 @@ button {
                 </div>
 
 
-<textarea
-id="codeEditor"
-spellcheck="false"><!DOCTYPE html>
+                <textarea
+                    id="codeEditor"
+                    spellcheck="false"><!DOCTYPE html>
 <html>
 
 <head>
@@ -2491,18 +2937,18 @@ body {
     font-family: Arial;
     text-align: center;
     padding: 50px;
-    background: #f8f9ff;
+    background: #eefaff;
 }
 
 h1 {
-    color: #5946d2;
+    color: #0066ff;
 }
 
 button {
     padding: 12px 22px;
     border: none;
     border-radius: 8px;
-    background: #5946d2;
+    background: #0066ff;
     color: white;
     cursor: pointer;
 }
@@ -2541,12 +2987,10 @@ function welcome() {
 
 </html></textarea>
 
-
             </div>
 
 
             <div class="preview-panel">
-
 
                 <div class="code-header">
 
@@ -2560,33 +3004,28 @@ function welcome() {
 
                 </div>
 
-
                 <iframe
                     id="codePreview"
                     title="Code Preview">
                 </iframe>
-
 
             </div>
 
 
         </div>
 
-
     </div>
-
 
 </section>
 
 
 <!-- =====================================================
-     CERTIFICATE
+     CAREER TRIAL
 ===================================================== -->
 
 <section
-    id="certificate"
+    id="career-trial"
     class="page sub-page">
-
 
     <button
         class="back-button"
@@ -2600,7 +3039,188 @@ function welcome() {
     <div class="sub-header">
 
         <h1>
-            ผ่านการทดสอบ Certificate
+            🧪 ทดลองสายอาชีพ
+        </h1>
+
+        <p>
+            ทดลองกิจกรรมจำลองของแต่ละสายอาชีพ
+            เพื่อค้นหาความถนัดและความสนใจของคุณ
+        </p>
+
+    </div>
+
+
+    <div class="trial-grid">
+
+
+        <!-- Programmer -->
+
+        <div
+            class="trial-card"
+            onclick="startTrial('Programmer')">
+
+            <div class="trial-icon">
+                👨‍💻
+            </div>
+
+            <h3>
+                ทดลองงาน Programmer
+            </h3>
+
+            <p>
+                ทดลองวิเคราะห์โจทย์
+                เขียนโค้ด และแก้ไขปัญหาเบื้องต้น
+            </p>
+
+            <button
+                class="trial-button"
+                onclick="event.stopPropagation(); startTrial('Programmer')">
+
+                เริ่มทดลอง
+
+            </button>
+
+        </div>
+
+
+        <!-- Web -->
+
+        <div
+            class="trial-card"
+            onclick="startTrial('Web Developer')">
+
+            <div class="trial-icon">
+                🌐
+            </div>
+
+            <h3>
+                ทดลองงาน Web Developer
+            </h3>
+
+            <p>
+                ทดลองออกแบบและสร้างหน้าเว็บไซต์
+                พร้อมปรับปรุงประสบการณ์ผู้ใช้
+            </p>
+
+            <button
+                class="trial-button"
+                onclick="event.stopPropagation(); startTrial('Web Developer')">
+
+                เริ่มทดลอง
+
+            </button>
+
+        </div>
+
+
+        <!-- Data -->
+
+        <div
+            class="trial-card"
+            onclick="startTrial('Data Analyst')">
+
+            <div class="trial-icon">
+                📊
+            </div>
+
+            <h3>
+                ทดลองงาน Data Analyst
+            </h3>
+
+            <p>
+                ทดลองวิเคราะห์ข้อมูล
+                ค้นหารูปแบบ และสรุปผล
+            </p>
+
+            <button
+                class="trial-button"
+                onclick="event.stopPropagation(); startTrial('Data Analyst')">
+
+                เริ่มทดลอง
+
+            </button>
+
+        </div>
+
+
+        <!-- UX -->
+
+        <div
+            class="trial-card"
+            onclick="startTrial('UX/UI Designer')">
+
+            <div class="trial-icon">
+                🎨
+            </div>
+
+            <h3>
+                ทดลองงาน UX/UI Designer
+            </h3>
+
+            <p>
+                ทดลองออกแบบหน้าจอ
+                และแก้ปัญหาประสบการณ์ผู้ใช้งาน
+            </p>
+
+            <button
+                class="trial-button"
+                onclick="event.stopPropagation(); startTrial('UX/UI Designer')">
+
+                เริ่มทดลอง
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="info-bar">
+
+        <div class="info-icon">
+            🧪
+        </div>
+
+        <div>
+
+            <h3>
+                ทดลองก่อนเลือกเส้นทางจริง
+            </h3>
+
+            <p>
+                ระบบจะช่วยให้คุณเห็นลักษณะงาน
+                และประเมินความสนใจก่อนตัดสินใจ
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CERTIFICATE
+===================================================== -->
+
+<section
+    id="certificate"
+    class="page sub-page">
+
+    <button
+        class="back-button"
+        onclick="showPage('dashboard')">
+
+        ← กลับ Dashboard
+
+    </button>
+
+
+    <div class="sub-header">
+
+        <h1>
+            🏆 Certificate
         </h1>
 
         <p>
@@ -2612,16 +3232,13 @@ function welcome() {
 
     <div class="certificate-box">
 
-
         <div class="certificate-icon">
             🏆
         </div>
 
-
         <h2>
             Programmer Certificate
         </h2>
-
 
         <p>
             แบบทดสอบความรู้พื้นฐานด้านการเขียนโปรแกรม
@@ -2653,21 +3270,18 @@ function welcome() {
 
         </button>
 
-
     </div>
-
 
 </section>
 
 
 <!-- =====================================================
-     CAREER PATH
+     BEHAVIOR
 ===================================================== -->
 
 <section
-    id="career-path"
+    id="behavior"
     class="page sub-page">
-
 
     <button
         class="back-button"
@@ -2681,7 +3295,110 @@ function welcome() {
     <div class="sub-header">
 
         <h1>
-            Career Path
+            🧠 ทดสอบพฤติกรรมและจรรยาบรรณ
+        </h1>
+
+        <p>
+            ประเมินพฤติกรรมและรูปแบบการทำงานในสายอาชีพ
+        </p>
+
+    </div>
+
+
+    <div class="question-box">
+
+        <div class="question-number">
+            คำถามที่ 1 / 10
+        </div>
+
+
+        <h2>
+            หากสมาชิกในทีมทำงานล่าช้า
+            คุณจะทำอย่างไร?
+        </h2>
+
+
+        <label class="answer">
+
+            <input
+                type="radio"
+                name="behavior">
+
+            พูดคุยและช่วยหาสาเหตุ
+
+        </label>
+
+
+        <label class="answer">
+
+            <input
+                type="radio"
+                name="behavior">
+
+            แจ้งหัวหน้าทันที
+
+        </label>
+
+
+        <label class="answer">
+
+            <input
+                type="radio"
+                name="behavior">
+
+            ปล่อยให้เขาจัดการเอง
+
+        </label>
+
+
+        <label class="answer">
+
+            <input
+                type="radio"
+                name="behavior">
+
+            ทำงานแทนทั้งหมด
+
+        </label>
+
+
+        <br>
+
+
+        <button
+            class="primary-button"
+            onclick="nextQuestion()">
+
+            ถัดไป →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CAREER PATH
+===================================================== -->
+
+<section
+    id="career-path"
+    class="page sub-page">
+
+    <button
+        class="back-button"
+        onclick="showPage('dashboard')">
+
+        ← กลับ Dashboard
+
+    </button>
+
+
+    <div class="sub-header">
+
+        <h1>
+            🗺️ Career Path
         </h1>
 
         <p>
@@ -2777,119 +3494,6 @@ function welcome() {
 
     </div>
 
-
-</section>
-
-
-<!-- =====================================================
-     BEHAVIOR
-===================================================== -->
-
-<section
-    id="behavior"
-    class="page sub-page">
-
-
-    <button
-        class="back-button"
-        onclick="showPage('dashboard')">
-
-        ← กลับ Dashboard
-
-    </button>
-
-
-    <div class="sub-header">
-
-        <h1>
-            ทดสอบพฤติกรรมและจรรยาบรรณ
-        </h1>
-
-        <p>
-            ประเมินพฤติกรรมและรูปแบบการทำงาน
-            ในสายอาชีพ
-        </p>
-
-    </div>
-
-
-    <div class="question-box">
-
-
-        <div class="question-number">
-
-            คำถามที่ 1 / 10
-
-        </div>
-
-
-        <h2>
-
-            หากสมาชิกในทีมทำงานล่าช้า
-            คุณจะทำอย่างไร?
-
-        </h2>
-
-
-        <label class="answer">
-
-            <input
-                type="radio"
-                name="behavior">
-
-            พูดคุยและช่วยหาสาเหตุ
-
-        </label>
-
-
-        <label class="answer">
-
-            <input
-                type="radio"
-                name="behavior">
-
-            แจ้งหัวหน้าทันที
-
-        </label>
-
-
-        <label class="answer">
-
-            <input
-                type="radio"
-                name="behavior">
-
-            ปล่อยให้เขาจัดการเอง
-
-        </label>
-
-
-        <label class="answer">
-
-            <input
-                type="radio"
-                name="behavior">
-
-            ทำงานแทนทั้งหมด
-
-        </label>
-
-
-        <br>
-
-
-        <button
-            class="primary-button"
-            onclick="nextQuestion()">
-
-            ถัดไป →
-
-        </button>
-
-
-    </div>
-
-
 </section>
 
 
@@ -2901,7 +3505,6 @@ function welcome() {
     id="jobs"
     class="page sub-page">
 
-
     <button
         class="back-button"
         onclick="showPage('dashboard')">
@@ -2914,12 +3517,11 @@ function welcome() {
     <div class="sub-header">
 
         <h1>
-            ตำแหน่งงานที่เหมาะสม
+            💼 ตำแหน่งงานที่เหมาะสม
         </h1>
 
         <p>
-            ตำแหน่งงานที่ระบบแนะนำ
-            จากโปรไฟล์และผลการทดสอบ
+            ตำแหน่งงานที่ระบบแนะนำจากโปรไฟล์และผลการทดสอบ
         </p>
 
     </div>
@@ -3029,7 +3631,6 @@ function welcome() {
 
     </div>
 
-
 </section>
 
 
@@ -3038,7 +3639,9 @@ function welcome() {
 </div>
 
 
-<!-- TOAST -->
+<!-- =====================================================
+     TOAST
+===================================================== -->
 
 <div
     id="toast"
@@ -3047,6 +3650,7 @@ function welcome() {
 
 
 <script>
+
 
 /* =====================================================
    PAGE NAVIGATION
@@ -3075,6 +3679,62 @@ function showPage(pageId) {
     }
 
 
+    document
+        .querySelectorAll(".menu-item")
+        .forEach(item => {
+
+            item.classList.remove("active");
+
+        });
+
+
+    const menuMap = {
+
+        "career-select":
+            "เลือกสายอาชีพ",
+
+        "learning":
+            "เรียนรู้สายอาชีพ",
+
+        "career-trial":
+            "ทดลองสายอาชีพ",
+
+        "certificate":
+            "Certificate",
+
+        "behavior":
+            "ทดสอบพฤติกรรม",
+
+        "career-path":
+            "Career Path",
+
+        "jobs":
+            "ตำแหน่งงานที่เหมาะสม"
+
+    };
+
+
+    if (menuMap[pageId]) {
+
+        document
+            .querySelectorAll(".menu-item")
+            .forEach(item => {
+
+                if (
+                    item.textContent
+                        .trim()
+                        .includes(menuMap[pageId])
+                ) {
+
+                    item.classList.add("active");
+
+                }
+
+            });
+
+    }
+
+
     window.scrollTo({
 
         top: 0,
@@ -3087,7 +3747,7 @@ function showPage(pageId) {
 
 
 /* =====================================================
-   CAREER
+   CAREER SELECT
 ===================================================== */
 
 function selectCareer(career) {
@@ -3100,11 +3760,23 @@ function selectCareer(career) {
 
 
 /* =====================================================
+   CAREER TRIAL
+===================================================== */
+
+function startTrial(career) {
+
+    showToast(
+        "เริ่มทดลองสายอาชีพ: " + career
+    );
+
+}
+
+
+/* =====================================================
    CODE EDITOR
 ===================================================== */
 
 function runCode() {
-
 
     const editor =
         document.getElementById(
@@ -3142,7 +3814,6 @@ function runCode() {
 
 function resetCode() {
 
-
     const editor =
         document.getElementById(
             "codeEditor"
@@ -3167,18 +3838,18 @@ body {
     font-family: Arial;
     text-align: center;
     padding: 50px;
-    background: #f8f9ff;
+    background: #eefaff;
 }
 
 h1 {
-    color: #5946d2;
+    color: #0066ff;
 }
 
 button {
     padding: 12px 22px;
     border: none;
     border-radius: 8px;
-    background: #5946d2;
+    background: #0066ff;
     color: white;
     cursor: pointer;
 }
@@ -3223,6 +3894,17 @@ function welcome() {
 }
 
 
+/* =====================================================
+   BEHAVIOR
+===================================================== */
+
+function nextQuestion() {
+
+    showToast(
+        "บันทึกคำตอบแล้ว กำลังไปคำถามถัดไป"
+    );
+
+}
 
 
 /* =====================================================
@@ -3230,7 +3912,6 @@ function welcome() {
 ===================================================== */
 
 function showToast(message) {
-
 
     const toast =
         document.getElementById(
