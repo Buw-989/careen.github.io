@@ -1615,6 +1615,15 @@ button {
 
         </button>
 
+<button
+            class="menu-item"
+            onclick="window.location.href='career-trial.html'">
+            <span class="menu-icon">💻</span>
+            ทดลองสายอาชีพ
+        </button>
+
+
+
 
 <button
     class="menu-item"
@@ -1958,7 +1967,48 @@ button {
 
             <div
                 class="career-card"
-                onclick="showPage('learning')">
+                onclick="window.location.href='career-trial.html'">
+
+                <h3>
+                    ทดลองสายอาชีพ
+                </h3>
+
+                <p>
+                    ทดลองเขียนโค้ดและสร้างระบบเบื้องต้น
+                    สำหรับสายงาน Programmer
+                </p>
+
+                <div class="illustration">
+                    💻
+                </div>
+
+                <div class="status">
+
+                    <span class="progress-circle">
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            ทดลองได้ทันที
+                        </strong>
+
+                        <small>
+                            เขียนโค้ด + ดูผลลัพธ์
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2 -->
+
+            <div
+                class="career-card"
+                onclick="window.location.href='learning.html'">
 
                 <h3>
                     เรียนรู้สายอาชีพ
@@ -3214,7 +3264,18 @@ function showToast(message) {
 }
 
 
+/* =====================================================
+   START
+===================================================== */
 
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        runCode();
+
+    }
+);
 
 </script>
 
