@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ทดลองสายอาชีพ - Programmer</title>
+<style>
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:Arial,"Noto Sans Thai",sans-serif;
+    background:#f5f6fb;
+    color:#1f2937;
+}
+.topbar{
+    height:68px;
+    background:#fff;
+    border-bottom:1px solid #e5e7eb;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 28px;
+}
+.brand{
+    font-weight:800;
+    color:#4f46e5;
+}
+.back-button{
+    border:1px solid #e5e7eb;
+    background:#fff;
+    color:#4f46e5;
+    padding:9px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+}
+.page{
+    max-width:1400px;
+    margin:auto;
+    padding:28px;
+}
+.header{
+    margin-bottom:22px;
+}
+.header h1{
+    margin:0;
+    font-size:28px;
+}
+.header p{
+    margin:8px 0 0;
+    color:#64748b;
+}
+.info{
+    background:#efedff;
+    border-left:4px solid #6366f1;
+    padding:15px 18px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+.workspace{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+.panel{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    overflow:hidden;
+}
+.panel-header{
+    padding:14px 16px;
+    border-bottom:1px solid #e5e7eb;
+    background:#fafafa;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.editor{
+    width:100%;
+    height:500px;
+    resize:none;
+    border:0;
+    outline:0;
+    padding:18px;
+    background:#111827;
+    color:#e5e7eb;
+    font:13px/1.7 Consolas,Monaco,monospace;
+}
+.preview{
+    width:100%;
+    height:500px;
+    border:0;
+    background:#fff;
+}
+.actions{
+    padding:14px 16px;
+    display:flex;
+    gap:10px;
+    border-top:1px solid #e5e7eb;
+}
+button.action{
+    border:0;
+    border-radius:8px;
+    padding:10px 16px;
+    cursor:pointer;
+    font-weight:700;
+}
+.run{
+    background:#4f46e5;
+    color:#fff;
+}
+.reset{
+    border:1px solid #d1d5db;
+    background:#fff;
+    color:#374151;
+}
+.challenge{
+    margin-top:18px;
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    padding:20px;
+}
+.challenge h2{
+    margin-top:0;
+}
+.challenge li{
+    margin:8px 0;
+}
+.toast{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    background:#1f2937;
+    color:#fff;
+    padding:12px 16px;
+    border-radius:8px;
+    display:none;
+}
+@media(max-width:900px){
+    .workspace{grid-template-columns:1fr}
+    .page{padding:18px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="brand">💻 Career Trial — Programmer</div>
+    <button class="back-button" onclick="window.location.href='index.html'">
+        ← กลับหน้าแรก
+    </button>
+</div>
+
+<main class="page">
+    <div class="header">
+        <h1>ทดลองสายอาชีพ: Programmer</h1>
+        <p>ทดลองเขียนโค้ด สร้างระบบขนาดเล็ก และดูผลลัพธ์ได้ทันที</p>
+    </div>
+
+    <div class="info">
+        <strong>🎯 ภารกิจทดลอง</strong>
+        <div style="margin-top:6px;color:#64748b;">
+            สร้างระบบกดปุ่มเพื่อแสดงข้อความต้อนรับ
+            เหมือนงานพื้นฐานที่โปรแกรมเมอร์ต้องทำจริง
+        </div>
+    </div>
+
+    <div class="workspace">
+        <section class="panel">
+            <div class="panel-header">
+                <strong>🧑‍💻 Code Editor</strong>
+                <span>HTML / CSS / JavaScript</span>
+            </div>
+
+            <textarea id="codeEditor" class="editor" spellcheck="false"><!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Mini Programmer System</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+    background: #f8f9ff;
+}
+.card {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+button {
+    padding: 12px 22px;
+    border: 0;
+    border-radius: 8px;
+    background: #5946d2;
+    color: white;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+<div class="card">
+    <h1>ระบบทดลองของฉัน</h1>
+    <p id="message">กดปุ่มเพื่อเริ่มระบบ</p>
+    <button onclick="startSystem()">เริ่มระบบ</button>
+</div>
+
+<script>
+function startSystem() {
+    document.getElementById("message").textContent =
+        "ยินดีต้อนรับสู่โลกของโปรแกรมเมอร์! 🚀";
+}
+</script>
+</body>
+</html></textarea>
+
+            <div class="actions">
+                <button class="action run" onclick="runCode()">▶ รันโค้ด</button>
+                <button class="action reset" onclick="resetCode()">↺ รีเซ็ต</button>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <strong>🌐 ผลลัพธ์</strong>
+                <span>Live Preview</span>
+            </div>
+            <iframe id="preview" class="preview" title="Code Preview"></iframe>
+        </section>
+    </div>
+
+    <section class="challenge">
+        <h2>🧩 แบบทดสอบทดลองงาน</h2>
+        <ol>
+            <li>เปลี่ยนข้อความหัวข้อ “ระบบทดลองของฉัน” เป็นชื่อระบบที่คุณคิดขึ้นเอง</li>
+            <li>เปลี่ยนข้อความเมื่อกดปุ่มให้เป็นข้อความต้อนรับของคุณเอง</li>
+            <li>เปลี่ยนสีปุ่มและพื้นหลังตามสไตล์ของคุณ</li>
+            <li>เพิ่มปุ่มอีก 1 ปุ่ม และสร้างฟังก์ชัน JavaScript ใหม่ให้ปุ่มนั้น</li>
+        </ol>
+    </section>
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script>
+const defaultCode = document.getElementById("codeEditor").value;
+
+function runCode(){
+    const code = document.getElementById("codeEditor").value;
+    document.getElementById("preview").srcdoc = code;
+    showToast("รันโค้ดเรียบร้อยแล้ว");
+}
+
+function resetCode(){
+    document.getElementById("codeEditor").value = defaultCode;
+    runCode();
+}
+
+function showToast(message){
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.style.display = "block";
+    clearTimeout(window.toastTimer);
+    window.toastTimer = setTimeout(() => {
+        toast.style.display = "none";
+    }, 2200);
+}
+
+window.addEventListener("DOMContentLoaded", runCode);
+</script>
+
+</body>
+</html>
