@@ -23,23 +23,23 @@ Career Path Dashboard
 }
 
 body {
-
     margin: 0;
+    min-height: 100vh;
 
     font-family:
         Arial,
         "Noto Sans Thai",
         sans-serif;
 
-    background: #f5f6fb;
+    color: #123;
 
-    color: #1f2937;
-}
-
-button {
-
-    font-family: inherit;
-
+    background:
+        linear-gradient(
+            135deg,
+            #dff6ff,
+            #b9e9ff,
+            #d4f2ff
+        );
 }
 
 
@@ -1703,11 +1703,7 @@ button {
             OTHER
         </div>
 
-        <button class="menu-item" onclick="showPage('fortune')">
-    <span class="menu-icon">🔮</span>
-    ดูดวง
-</button>
-<a href="fortune.html" class="menu-item">
+       <a href="fortune.html" class="menu-item">
     <span class="menu-icon">🔮</span>
     ดูดวง
 </a>
@@ -2045,13 +2041,21 @@ button {
                 💻
             </div>
 
-            <div class="status">
+              <div class="status">
 
-                <span class="progress-circle">
+                <span class="status-icon">
+                    ✓
                 </span>
 
                 <div>
 
+                    <strong>
+                        เสร็จสิ้น
+                    </strong>
+
+               <small>
+                        18 มิ.ย. 2567
+                </small>
                     <strong>
                         ทดลองได้ทันที
                     </strong>
