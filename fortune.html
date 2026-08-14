@@ -54,10 +54,6 @@
         }
 
 
-        /* =========================
-           HEADER
-        ========================= */
-
         header {
 
             padding: 20px;
@@ -102,10 +98,6 @@
         }
 
 
-        /* =========================
-           BACK BUTTON
-        ========================= */
-
         .back-button {
 
             position: absolute;
@@ -140,10 +132,6 @@
 
         }
 
-
-        /* =========================
-           MAIN
-        ========================= */
 
         .container {
 
@@ -186,10 +174,6 @@
         }
 
 
-        /* =========================
-           ORB
-        ========================= */
-
         .orb {
 
             width: 130px;
@@ -231,21 +215,21 @@
         @keyframes floating {
 
             0%,100% {
+
                 transform:
                     translateY(0);
+
             }
 
             50% {
+
                 transform:
                     translateY(-10px);
+
             }
 
         }
 
-
-        /* =========================
-           BUTTON
-        ========================= */
 
         .random-button {
 
@@ -294,10 +278,6 @@
         }
 
 
-        /* =========================
-           RESULT
-        ========================= */
-
         #result {
 
             margin-top: 30px;
@@ -307,9 +287,9 @@
 
         .career-result {
 
-            padding: 25px;
+            overflow: hidden;
 
-            border-radius: 18px;
+            border-radius: 20px;
 
             background:
                 rgba(0, 140, 255, .10);
@@ -331,7 +311,8 @@
                 opacity: 0;
 
                 transform:
-                    translateY(15px);
+                    translateY(15px)
+                    scale(.97);
 
             }
 
@@ -340,16 +321,48 @@
                 opacity: 1;
 
                 transform:
-                    translateY(0);
+                    translateY(0)
+                    scale(1);
 
             }
 
         }
 
 
+        /* รูปอาชีพ */
+
+        .career-image {
+
+            width: 100%;
+
+            height: 280px;
+
+            object-fit: cover;
+
+            display: block;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0066ff,
+                    #00d9ff
+                );
+
+        }
+
+
+        .career-content {
+
+            padding: 25px;
+
+        }
+
+
         .career-icon {
 
-            font-size: 55px;
+            font-size: 45px;
+
+            margin-bottom: 5px;
 
         }
 
@@ -357,7 +370,7 @@
         .career-name {
 
             margin:
-                10px 0;
+                5px 0 10px;
 
             font-size: 28px;
 
@@ -370,11 +383,38 @@
         }
 
 
+        .career-number {
+
+            display: inline-block;
+
+            margin-bottom: 12px;
+
+            padding:
+                5px 12px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(0, 217, 255, .12);
+
+            border:
+                1px solid
+                rgba(0, 217, 255, .25);
+
+            color: #78dff5;
+
+            font-size: 11px;
+
+        }
+
+
         .career-description {
 
             color: #a8d4e8;
 
             line-height: 1.7;
+
+            font-size: 14px;
 
         }
 
@@ -399,6 +439,8 @@
 
             cursor: pointer;
 
+            font-weight: bold;
+
         }
 
 
@@ -410,10 +452,6 @@
         }
 
 
-        /* =========================
-           MOBILE
-        ========================= */
-
         @media(max-width:600px) {
 
             .back-button {
@@ -424,15 +462,31 @@
 
             }
 
+
             header {
 
                 padding-top: 15px;
 
             }
 
+
             .container {
 
                 margin-top: 30px;
+
+            }
+
+
+            .career-image {
+
+                height: 220px;
+
+            }
+
+
+            .career-name {
+
+                font-size: 22px;
 
             }
 
@@ -463,7 +517,7 @@
 
 
     <p>
-        สุ่มค้นหาสายอาชีพจาก 30 อาชีพทั่วโลก
+        สุ่มค้นหาสายอาชีพจาก 100 อาชีพทั่วโลก
     </p>
 
 </header>
@@ -487,7 +541,8 @@
 
 
         <p>
-            ให้ระบบสุ่มสายอาชีพ
+            ให้ระบบสุ่มสายอาชีพจาก 100 อาชีพ
+            <br>
             เพื่อค้นหาอาชีพที่น่าสนใจสำหรับคุณ
         </p>
 
@@ -519,238 +574,1360 @@
 <script>
 
 
-/* ==========================================
-   30 GLOBAL CAREERS
-========================================== */
+/* =====================================================
+   100 GLOBAL CAREERS
+===================================================== */
 
 const careers = [
 
     {
         name: "Software Developer",
         icon: "💻",
-        description:
-        "พัฒนาโปรแกรมและระบบซอฟต์แวร์"
+        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาโปรแกรมและระบบซอฟต์แวร์สำหรับองค์กรและผู้ใช้งาน"
+    },
+
+    {
+        name: "Web Developer",
+        icon: "🌐",
+        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาเว็บไซต์และ Web Application"
     },
 
     {
         name: "Data Scientist",
         icon: "📊",
-        description:
-        "วิเคราะห์ข้อมูลและพัฒนาโมเดลข้อมูล"
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+        description: "วิเคราะห์ข้อมูลและสร้างโมเดลเพื่อค้นหาองค์ความรู้จากข้อมูล"
     },
 
     {
         name: "Artificial Intelligence Engineer",
         icon: "🤖",
-        description:
-        "พัฒนาเทคโนโลยีปัญญาประดิษฐ์"
+        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาระบบและเทคโนโลยีปัญญาประดิษฐ์"
     },
 
     {
         name: "Cybersecurity Specialist",
         icon: "🔐",
-        description:
-        "ดูแลความปลอดภัยของระบบและข้อมูล"
+        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลความปลอดภัยของระบบ เครือข่าย และข้อมูล"
     },
 
     {
         name: "UX/UI Designer",
         icon: "🎨",
-        description:
-        "ออกแบบประสบการณ์และส่วนติดต่อผู้ใช้งาน"
+        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบประสบการณ์และส่วนติดต่อผู้ใช้งาน"
     },
 
     {
         name: "Digital Marketing Specialist",
         icon: "📱",
-        description:
-        "วางแผนการตลาดผ่านช่องทางดิจิทัล"
+        image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=1200&q=80",
+        description: "วางแผนการตลาดผ่านช่องทางดิจิทัล"
     },
 
     {
         name: "Business Analyst",
         icon: "📈",
-        description:
-        "วิเคราะห์ธุรกิจและพัฒนาแนวทางปรับปรุงองค์กร"
+        image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80",
+        description: "วิเคราะห์ธุรกิจและพัฒนาแนวทางปรับปรุงองค์กร"
     },
 
     {
         name: "Project Manager",
         icon: "📋",
-        description:
-        "บริหารโครงการ ทีมงาน และทรัพยากร"
+        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารโครงการ ทีมงาน เวลา และทรัพยากร"
     },
 
     {
         name: "Financial Analyst",
         icon: "💰",
-        description:
-        "วิเคราะห์ข้อมูลทางการเงินและการลงทุน"
+        image: "https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1200&q=80",
+        description: "วิเคราะห์ข้อมูลทางการเงินและการลงทุน"
     },
 
     {
         name: "Accountant",
         icon: "🧾",
-        description:
-        "จัดทำและวิเคราะห์ข้อมูลบัญชี"
+        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+        description: "จัดทำและวิเคราะห์ข้อมูลทางบัญชี"
     },
 
     {
         name: "Doctor",
         icon: "👨‍⚕️",
-        description:
-        "ดูแลและรักษาผู้ป่วย"
+        image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแล วินิจฉัย และรักษาผู้ป่วย"
     },
 
     {
         name: "Nurse",
         icon: "👩‍⚕️",
-        description:
-        "ดูแลผู้ป่วยและสนับสนุนการรักษา"
+        image: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลผู้ป่วยและสนับสนุนการรักษา"
     },
 
     {
         name: "Pharmacist",
         icon: "💊",
-        description:
-        "ดูแลและให้คำแนะนำเกี่ยวกับยา"
+        image: "https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลและให้คำแนะนำเกี่ยวกับยา"
     },
 
     {
         name: "Psychologist",
         icon: "🧠",
-        description:
-        "ให้คำปรึกษาและศึกษาพฤติกรรมมนุษย์"
+        image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาและให้คำปรึกษาด้านพฤติกรรมและจิตใจ"
     },
 
     {
         name: "Teacher",
         icon: "👨‍🏫",
-        description:
-        "ถ่ายทอดความรู้และพัฒนาผู้เรียน"
+        image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80",
+        description: "ถ่ายทอดความรู้และพัฒนาผู้เรียน"
     },
 
     {
         name: "Lawyer",
         icon: "⚖️",
-        description:
-        "ให้คำปรึกษาและดำเนินงานด้านกฎหมาย"
+        image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
+        description: "ให้คำปรึกษาและดำเนินงานด้านกฎหมาย"
     },
 
     {
         name: "Architect",
         icon: "🏛️",
-        description:
-        "ออกแบบอาคารและพื้นที่"
+        image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบอาคารและพื้นที่"
     },
 
     {
         name: "Civil Engineer",
         icon: "🏗️",
-        description:
-        "ออกแบบและพัฒนาโครงสร้างพื้นฐาน"
+        image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบและพัฒนาโครงสร้างพื้นฐาน"
     },
 
     {
         name: "Mechanical Engineer",
         icon: "⚙️",
-        description:
-        "ออกแบบและพัฒนาเครื่องจักร"
+        image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบและพัฒนาเครื่องจักร"
     },
 
     {
         name: "Electrical Engineer",
         icon: "⚡",
-        description:
-        "ออกแบบระบบไฟฟ้าและอุปกรณ์อิเล็กทรอนิกส์"
+        image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบระบบไฟฟ้าและอุปกรณ์อิเล็กทรอนิกส์"
     },
 
     {
         name: "Robotics Engineer",
         icon: "🦾",
-        description:
-        "ออกแบบและพัฒนาหุ่นยนต์"
+        image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบและพัฒนาหุ่นยนต์"
     },
 
     {
         name: "Environmental Scientist",
         icon: "🌱",
-        description:
-        "ศึกษาและแก้ไขปัญหาสิ่งแวดล้อม"
+        image: "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาและแก้ไขปัญหาสิ่งแวดล้อม"
     },
 
     {
         name: "Chef",
         icon: "👨‍🍳",
-        description:
-        "สร้างสรรค์และประกอบอาหาร"
+        image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างสรรค์และประกอบอาหาร"
     },
 
     {
         name: "Graphic Designer",
         icon: "🖌️",
-        description:
-        "สร้างสรรค์งานออกแบบกราฟิก"
+        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างสรรค์งานออกแบบกราฟิก"
     },
 
     {
         name: "Photographer",
         icon: "📷",
-        description:
-        "สร้างสรรค์ภาพถ่ายเพื่อการสื่อสาร"
+        image: "https://images.unsplash.com/photo-1452780212940-6f5c0d14d848?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างสรรค์ภาพถ่ายเพื่อการสื่อสาร"
     },
 
     {
         name: "Film Director",
         icon: "🎬",
-        description:
-        "กำกับภาพยนตร์และงานวิดีโอ"
+        image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80",
+        description: "กำกับภาพยนตร์และงานวิดีโอ"
     },
 
     {
         name: "Game Developer",
         icon: "🎮",
-        description:
-        "พัฒนาเกมและประสบการณ์ Interactive"
+        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาเกมและประสบการณ์ Interactive"
     },
 
     {
         name: "Entrepreneur",
         icon: "🚀",
-        description:
-        "สร้างและบริหารธุรกิจ"
+        image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างและบริหารธุรกิจ"
     },
 
     {
         name: "Pilot",
         icon: "✈️",
-        description:
-        "ควบคุมและปฏิบัติการบิน"
+        image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
+        description: "ควบคุมและปฏิบัติการบิน"
     },
 
     {
         name: "Translator",
         icon: "🌍",
-        description:
-        "แปลภาษาและช่วยสื่อสารระหว่างวัฒนธรรม"
+        image: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1200&q=80",
+        description: "แปลภาษาและช่วยสื่อสารระหว่างวัฒนธรรม"
+    },
+
+    {
+        name: "Content Creator",
+        icon: "🎥",
+        image: "https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างเนื้อหาสำหรับสื่อออนไลน์"
+    },
+
+    {
+        name: "Journalist",
+        icon: "📰",
+        image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80",
+        description: "ค้นคว้าและนำเสนอข่าวสาร"
+    },
+
+    {
+        name: "Product Manager",
+        icon: "📦",
+        image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80",
+        description: "วางแผนและบริหารผลิตภัณฑ์"
+    },
+
+    {
+        name: "Human Resources Specialist",
+        icon: "👥",
+        image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลบุคลากรและพัฒนาทรัพยากรมนุษย์"
+    },
+
+    {
+        name: "Recruiter",
+        icon: "🔎",
+        image: "https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1200&q=80",
+        description: "ค้นหาและคัดเลือกบุคลากร"
+    },
+
+    {
+        name: "Sales Manager",
+        icon: "🤝",
+        image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารทีมขายและกลยุทธ์การขาย"
+    },
+
+    {
+        name: "Economist",
+        icon: "📉",
+        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+        description: "วิเคราะห์เศรษฐกิจและแนวโน้มทางการเงิน"
+    },
+
+    {
+        name: "Market Research Analyst",
+        icon: "🔍",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาตลาดและพฤติกรรมของผู้บริโภค"
+    },
+
+    {
+        name: "Investment Analyst",
+        icon: "💹",
+        image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+        description: "วิเคราะห์โอกาสและความเสี่ยงด้านการลงทุน"
+    },
+
+    {
+        name: "Actuary",
+        icon: "🧮",
+        image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1200&q=80",
+        description: "วิเคราะห์ความเสี่ยงด้วยสถิติและคณิตศาสตร์"
+    },
+
+    {
+        name: "Auditor",
+        icon: "🔎",
+        image: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1200&q=80",
+        description: "ตรวจสอบข้อมูลและระบบทางการเงิน"
+    },
+
+    {
+        name: "Operations Manager",
+        icon: "⚙️",
+        image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารกระบวนการทำงานขององค์กร"
+    },
+
+    {
+        name: "Supply Chain Manager",
+        icon: "🚚",
+        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารห่วงโซ่อุปทานและการกระจายสินค้า"
+    },
+
+    {
+        name: "Logistics Specialist",
+        icon: "📦",
+        image: "https://images.unsplash.com/photo-1586528116493-da8b8d2b1f4d?auto=format&fit=crop&w=1200&q=80",
+        description: "จัดการการขนส่งและโลจิสติกส์"
+    },
+
+    {
+        name: "Procurement Specialist",
+        icon: "🛒",
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารการจัดซื้อสินค้าและบริการ"
+    },
+
+    {
+        name: "Human Resources Manager",
+        icon: "👔",
+        image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารและพัฒนาบุคลากรในองค์กร"
+    },
+
+    {
+        name: "Public Relations Specialist",
+        icon: "📣",
+        image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างภาพลักษณ์และการสื่อสารองค์กร"
+    },
+
+    {
+        name: "Social Media Manager",
+        icon: "📲",
+        image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารช่องทาง Social Media ขององค์กร"
+    },
+
+    {
+        name: "Brand Manager",
+        icon: "⭐",
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
+        description: "วางแผนและพัฒนาแบรนด์"
+    },
+
+    {
+        name: "Copywriter",
+        icon: "✍️",
+        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80",
+        description: "เขียนข้อความเพื่อการตลาดและการสื่อสาร"
+    },
+
+    {
+        name: "Editor",
+        icon: "📝",
+        image: "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+        description: "ตรวจสอบและปรับปรุงเนื้อหา"
+    },
+
+    {
+        name: "Video Editor",
+        icon: "🎞️",
+        image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80",
+        description: "ตัดต่อและสร้างสรรค์วิดีโอ"
+    },
+
+    {
+        name: "Animator",
+        icon: "🎞️",
+        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างภาพเคลื่อนไหวและ Animation"
+    },
+
+    {
+        name: "3D Artist",
+        icon: "🧊",
+        image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างงานศิลปะและโมเดล 3 มิติ"
+    },
+
+    {
+        name: "Interior Designer",
+        icon: "🛋️",
+        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบพื้นที่ภายในอาคาร"
+    },
+
+    {
+        name: "Fashion Designer",
+        icon: "👗",
+        image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบเสื้อผ้าและแฟชั่น"
+    },
+
+    {
+        name: "Industrial Designer",
+        icon: "🛠️",
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบผลิตภัณฑ์และสิ่งของอุตสาหกรรม"
+    },
+
+    {
+        name: "Chemical Engineer",
+        icon: "🧪",
+        image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาและควบคุมกระบวนการทางเคมี"
+    },
+
+    {
+        name: "Biomedical Engineer",
+        icon: "🧬",
+        image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาเทคโนโลยีและอุปกรณ์ทางการแพทย์"
+    },
+
+    {
+        name: "Aerospace Engineer",
+        icon: "🚀",
+        image: "https://images.unsplash.com/photo-1517976547714-720226b864c1?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบและพัฒนาอากาศยานและเทคโนโลยีอวกาศ"
+    },
+
+    {
+        name: "Marine Engineer",
+        icon: "🚢",
+        image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลระบบวิศวกรรมของเรือและอุปกรณ์ทางทะเล"
+    },
+
+    {
+        name: "Geologist",
+        icon: "🪨",
+        image: "https://images.unsplash.com/photo-1529946825183-536c6317a5e8?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาธรณีวิทยาและโครงสร้างของโลก"
+    },
+
+    {
+        name: "Astronomer",
+        icon: "🔭",
+        image: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาดวงดาวและปรากฏการณ์ในจักรวาล"
+    },
+
+    {
+        name: "Physicist",
+        icon: "⚛️",
+        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษากฎและปรากฏการณ์ทางฟิสิกส์"
+    },
+
+    {
+        name: "Chemist",
+        icon: "⚗️",
+        image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาและทดลองเกี่ยวกับสารและปฏิกิริยาเคมี"
+    },
+
+    {
+        name: "Biologist",
+        icon: "🧬",
+        image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาสิ่งมีชีวิตและระบบทางชีววิทยา"
+    },
+
+    {
+        name: "Microbiologist",
+        icon: "🔬",
+        image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาจุลินทรีย์และสิ่งมีชีวิตขนาดเล็ก"
+    },
+
+    {
+        name: "Food Scientist",
+        icon: "🧪",
+        image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=1200&q=80",
+        description: "วิจัยและพัฒนาผลิตภัณฑ์อาหาร"
+    },
+
+    {
+        name: "Agricultural Scientist",
+        icon: "🌾",
+        image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80",
+        description: "วิจัยและพัฒนาด้านการเกษตร"
+    },
+
+    {
+        name: "Veterinarian",
+        icon: "🐾",
+        image: "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลและรักษาสุขภาพสัตว์"
+    },
+
+    {
+        name: "Dentist",
+        icon: "🦷",
+        image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลและรักษาสุขภาพช่องปากและฟัน"
+    },
+
+    {
+        name: "Physical Therapist",
+        icon: "🏃",
+        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
+        description: "ฟื้นฟูการเคลื่อนไหวและสมรรถภาพร่างกาย"
+    },
+
+    {
+        name: "Nutritionist",
+        icon: "🥗",
+        image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
+        description: "ให้คำแนะนำด้านโภชนาการและอาหาร"
+    },
+
+    {
+        name: "Public Health Specialist",
+        icon: "🏥",
+        image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาและดูแลสุขภาพของประชากร"
+    },
+
+    {
+        name: "Research Scientist",
+        icon: "🔬",
+        image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80",
+        description: "ทำวิจัยเพื่อค้นพบองค์ความรู้ใหม่"
+    },
+
+    {
+        name: "Professor",
+        icon: "🎓",
+        image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80",
+        description: "สอนและทำวิจัยในระดับมหาวิทยาลัย"
+    },
+
+    {
+        name: "Librarian",
+        icon: "📚",
+        image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1200&q=80",
+        description: "จัดการและให้บริการทรัพยากรสารสนเทศ"
+    },
+
+    {
+        name: "Social Worker",
+        icon: "🤝",
+        image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80",
+        description: "ช่วยเหลือบุคคลและชุมชนในการแก้ไขปัญหาสังคม"
+    },
+
+    {
+        name: "Diplomat",
+        icon: "🌐",
+        image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80",
+        description: "ดำเนินงานด้านความสัมพันธ์ระหว่างประเทศ"
+    },
+
+    {
+        name: "International Relations Specialist",
+        icon: "🌍",
+        image: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1200&q=80",
+        description: "วิเคราะห์และประสานงานด้านความสัมพันธ์ระหว่างประเทศ"
+    },
+
+    {
+        name: "Urban Planner",
+        icon: "🏙️",
+        image: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=80",
+        description: "วางแผนและออกแบบการพัฒนาเมือง"
+    },
+
+    {
+        name: "Environmental Engineer",
+        icon: "♻️",
+        image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาแนวทางแก้ไขปัญหาสิ่งแวดล้อม"
+    },
+
+    {
+        name: "Renewable Energy Engineer",
+        icon: "☀️",
+        image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาเทคโนโลยีพลังงานหมุนเวียน"
+    },
+
+    {
+        name: "Sustainability Consultant",
+        icon: "🌱",
+        image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1200&q=80",
+        description: "ให้คำปรึกษาด้านความยั่งยืนแก่ธุรกิจและองค์กร"
+    },
+
+    {
+        name: "Pilot Instructor",
+        icon: "🛩️",
+        image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
+        description: "ฝึกอบรมและพัฒนานักบิน"
+    },
+
+    {
+        name: "Air Traffic Controller",
+        icon: "🛫",
+        image: "https://images.unsplash.com/photo-1517479149777-5f3b1511d5ad?auto=format&fit=crop&w=1200&q=80",
+        description: "ควบคุมและจัดการการจราจรทางอากาศ"
+    },
+
+    {
+        name: "Hotel Manager",
+        icon: "🏨",
+        image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารโรงแรมและธุรกิจบริการ"
+    },
+
+    {
+        name: "Tour Guide",
+        icon: "🗺️",
+        image: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80",
+        description: "นำเที่ยวและให้ความรู้เกี่ยวกับสถานที่ท่องเที่ยว"
+    },
+
+    {
+        name: "Event Planner",
+        icon: "🎉",
+        image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+        description: "วางแผนและจัดงานกิจกรรมต่าง ๆ"
+    },
+
+    {
+        name: "Barista",
+        icon: "☕",
+        image: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างสรรค์และให้บริการเครื่องดื่มกาแฟ"
+    },
+
+    {
+        name: "Pastry Chef",
+        icon: "🥐",
+        image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างสรรค์ขนมอบและเบเกอรี่"
+    },
+
+    {
+        name: "Restaurant Manager",
+        icon: "🍽️",
+        image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารจัดการร้านอาหารและทีมงาน"
+    },
+
+    {
+        name: "Music Producer",
+        icon: "🎧",
+        image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80",
+        description: "ผลิตและสร้างสรรค์ผลงานเพลง"
+    },
+
+    {
+        name: "Musician",
+        icon: "🎸",
+        image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างสรรค์และแสดงผลงานดนตรี"
+    },
+
+    {
+        name: "Actor",
+        icon: "🎭",
+        image: "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1200&q=80",
+        description: "ถ่ายทอดเรื่องราวผ่านการแสดง"
+    },
+
+    {
+        name: "Writer",
+        icon: "✍️",
+        image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างสรรค์งานเขียนและเรื่องราว"
+    },
+
+    {
+        name: "Game Designer",
+        icon: "🎮",
+        image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบระบบ เกมเพลย์ และประสบการณ์ในเกม"
+    },
+
+    {
+        name: "Mobile App Developer",
+        icon: "📱",
+        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาแอปพลิเคชันสำหรับสมาร์ตโฟน"
+    },
+
+    {
+        name: "Cloud Engineer",
+        icon: "☁️",
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบและดูแลระบบ Cloud"
+    },
+
+    {
+        name: "DevOps Engineer",
+        icon: "⚙️",
+        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลกระบวนการพัฒนาและส่งมอบซอฟต์แวร์"
+    },
+
+    {
+        name: "Database Administrator",
+        icon: "🗄️",
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารจัดการฐานข้อมูลขององค์กร"
+    },
+
+    {
+        name: "Network Engineer",
+        icon: "🌐",
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบและดูแลระบบเครือข่าย"
+    },
+
+    {
+        name: "Blockchain Developer",
+        icon: "⛓️",
+        image: "https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาเทคโนโลยี Blockchain และระบบกระจายศูนย์"
+    },
+
+    {
+        name: "Machine Learning Engineer",
+        icon: "🧠",
+        image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาโมเดล Machine Learning"
+    },
+
+    {
+        name: "Information Security Analyst",
+        icon: "🛡️",
+        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80",
+        description: "วิเคราะห์และป้องกันภัยคุกคามด้านสารสนเทศ"
+    },
+
+    {
+        name: "Game Programmer",
+        icon: "👾",
+        image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
+        description: "เขียนโปรแกรมและระบบสำหรับเกม"
+    },
+
+    {
+        name: "AI Researcher",
+        icon: "🔬",
+        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1200&q=80",
+        description: "วิจัยเทคโนโลยีปัญญาประดิษฐ์"
+    },
+
+    {
+        name: "SEO Specialist",
+        icon: "🔎",
+        image: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาเว็บไซต์ให้ค้นพบได้ง่ายบน Search Engine"
+    },
+
+    {
+        name: "E-commerce Manager",
+        icon: "🛍️",
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารธุรกิจและแพลตฟอร์ม E-commerce"
+    },
+
+    {
+        name: "Customer Success Manager",
+        icon: "😊",
+        image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลความสำเร็จและประสบการณ์ของลูกค้า"
+    },
+
+    {
+        name: "Management Consultant",
+        icon: "💼",
+        image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=80",
+        description: "ให้คำปรึกษาด้านกลยุทธ์และการบริหารองค์กร"
+    },
+
+    {
+        name: "Real Estate Agent",
+        icon: "🏠",
+        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+        description: "ให้บริการด้านการซื้อขายและเช่าอสังหาริมทรัพย์"
+    },
+
+    {
+        name: "Insurance Specialist",
+        icon: "🛡️",
+        image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80",
+        description: "ให้คำแนะนำและบริหารผลิตภัณฑ์ประกันภัย"
+    },
+
+    {
+        name: "Personal Trainer",
+        icon: "🏋️",
+        image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
+        description: "วางแผนการออกกำลังกายและพัฒนาสุขภาพร่างกาย"
+    },
+
+    {
+        name: "Sports Coach",
+        icon: "🏆",
+        image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80",
+        description: "ฝึกสอนและพัฒนานักกีฬา"
+    },
+
+    {
+        name: "Fitness Instructor",
+        icon: "🏃",
+        image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80",
+        description: "สอนการออกกำลังกายและดูแลสมรรถภาพ"
+    },
+
+    {
+        name: "Firefighter",
+        icon: "🚒",
+        image: "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=80",
+        description: "ป้องกันและช่วยเหลือเหตุฉุกเฉินและอัคคีภัย"
+    },
+
+    {
+        name: "Police Officer",
+        icon: "👮",
+        image: "https://images.unsplash.com/photo-1453873531674-2151bcd01707?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลความปลอดภัยและบังคับใช้กฎหมาย"
+    },
+
+    {
+        name: "Emergency Medical Technician",
+        icon: "🚑",
+        image: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80",
+        description: "ให้ความช่วยเหลือทางการแพทย์ฉุกเฉิน"
+    },
+
+    {
+        name: "Public Administrator",
+        icon: "🏛️",
+        image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารงานและนโยบายภาครัฐ"
+    },
+
+    {
+        name: "Policy Analyst",
+        icon: "📑",
+        image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80",
+        description: "วิเคราะห์นโยบายและผลกระทบต่อสังคม"
+    },
+
+    {
+        name: "Archivist",
+        icon: "🗃️",
+        image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80",
+        description: "จัดเก็บและอนุรักษ์เอกสารและข้อมูลสำคัญ"
+    },
+
+    {
+        name: "Museum Curator",
+        icon: "🏺",
+        image: "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลและจัดแสดงวัตถุทางศิลปะและวัฒนธรรม"
+    },
+
+    {
+        name: "Archaeologist",
+        icon: "🏺",
+        image: "https://images.unsplash.com/photo-1597424216809-2e3a2c0e2b7e?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาหลักฐานและอารยธรรมในอดีต"
+    },
+
+    {
+        name: "Anthropologist",
+        icon: "🌎",
+        image: "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษามนุษย์ วัฒนธรรม และสังคม"
+    },
+
+    {
+        name: "Sociologist",
+        icon: "👥",
+        image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาสังคมและพฤติกรรมของมนุษย์"
+    },
+
+    {
+        name: "Political Scientist",
+        icon: "🏛️",
+        image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาและวิเคราะห์ระบบการเมือง"
+    },
+
+    {
+        name: "Historian",
+        icon: "📜",
+        image: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาประวัติศาสตร์และเหตุการณ์ในอดีต"
+    },
+
+    {
+        name: "Interpreter",
+        icon: "🗣️",
+        image: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1200&q=80",
+        description: "แปลภาษาแบบพูดระหว่างบุคคลหรือการประชุม"
+    },
+
+    {
+        name: "Flight Attendant",
+        icon: "✈️",
+        image: "https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลความปลอดภัยและบริการผู้โดยสารบนเครื่องบิน"
+    },
+
+    {
+        name: "Ship Captain",
+        icon: "🚢",
+        image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1200&q=80",
+        description: "ควบคุมและบริหารการเดินเรือ"
+    },
+
+    {
+        name: "Construction Manager",
+        icon: "🏗️",
+        image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารโครงการก่อสร้างและทีมงาน"
+    },
+
+    {
+        name: "Surveyor",
+        icon: "📐",
+        image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
+        description: "สำรวจและวัดพื้นที่สำหรับงานก่อสร้างและที่ดิน"
+    },
+
+    {
+        name: "Landscape Architect",
+        icon: "🌳",
+        image: "https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบพื้นที่กลางแจ้งและภูมิทัศน์"
+    },
+
+    {
+        name: "Interior Architect",
+        icon: "🏠",
+        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบพื้นที่ภายในให้เหมาะกับการใช้งาน"
+    },
+
+    {
+        name: "Fashion Stylist",
+        icon: "👗",
+        image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบและจัดสไตล์การแต่งกาย"
+    },
+
+    {
+        name: "Makeup Artist",
+        icon: "💄",
+        image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างสรรค์การแต่งหน้าเพื่อแฟชั่น สื่อ และงานแสดง"
+    },
+
+    {
+        name: "Hair Stylist",
+        icon: "💇",
+        image: "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบและดูแลทรงผม"
+    },
+
+    {
+        name: "Jewelry Designer",
+        icon: "💎",
+        image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบเครื่องประดับและงานอัญมณี"
+    },
+
+    {
+        name: "Art Director",
+        icon: "🎨",
+        image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=1200&q=80",
+        description: "กำกับทิศทางด้านศิลปะและภาพลักษณ์ของงาน"
+    },
+
+    {
+        name: "Creative Director",
+        icon: "💡",
+        image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80",
+        description: "กำหนดแนวคิดและทิศทางสร้างสรรค์ขององค์กรหรือแบรนด์"
+    },
+
+    {
+        name: "Sound Engineer",
+        icon: "🎚️",
+        image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80",
+        description: "บันทึก มิกซ์ และควบคุมคุณภาพเสียง"
+    },
+
+    {
+        name: "Lighting Designer",
+        icon: "💡",
+        image: "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบแสงสำหรับเวที งานแสดง และพื้นที่ต่าง ๆ"
+    },
+
+    {
+        name: "Theater Director",
+        icon: "🎭",
+        image: "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1200&q=80",
+        description: "กำกับการแสดงละครเวที"
+    },
+
+    {
+        name: "Producer",
+        icon: "🎬",
+        image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารการผลิตภาพยนตร์ รายการ หรือสื่อ"
+    },
+
+    {
+        name: "Voice Actor",
+        icon: "🎙️",
+        image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1200&q=80",
+        description: "ใช้เสียงในการพากย์และสร้างสรรค์งานสื่อ"
+    },
+
+    {
+        name: "Podcast Producer",
+        icon: "🎙️",
+        image: "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=1200&q=80",
+        description: "ผลิตและบริหารรายการ Podcast"
+    },
+
+    {
+        name: "Travel Blogger",
+        icon: "🌏",
+        image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างเนื้อหาเกี่ยวกับการเดินทางและสถานที่ต่าง ๆ"
+    },
+
+    {
+        name: "Professional Photographer",
+        icon: "📸",
+        image: "https://images.unsplash.com/photo-1452780212940-2361e5a9f2c2?auto=format&fit=crop&w=1200&q=80",
+        description: "ถ่ายภาพระดับมืออาชีพสำหรับงานต่าง ๆ"
+    },
+
+    {
+        name: "Drone Operator",
+        icon: "🚁",
+        image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1200&q=80",
+        description: "ควบคุมโดรนเพื่อถ่ายภาพ สำรวจ หรือปฏิบัติงาน"
+    },
+
+    {
+        name: "GIS Specialist",
+        icon: "🗺️",
+        image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80",
+        description: "วิเคราะห์ข้อมูลภูมิสารสนเทศและแผนที่"
+    },
+
+    {
+        name: "Meteorologist",
+        icon: "🌦️",
+        image: "https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาและพยากรณ์สภาพอากาศ"
+    },
+
+    {
+        name: "Oceanographer",
+        icon: "🌊",
+        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาทะเล มหาสมุทร และระบบนิเวศทางทะเล"
+    },
+
+    {
+        name: "Marine Biologist",
+        icon: "🐋",
+        image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาสิ่งมีชีวิตและระบบนิเวศในทะเล"
+    },
+
+    {
+        name: "Wildlife Biologist",
+        icon: "🦁",
+        image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาสัตว์ป่าและระบบนิเวศ"
+    },
+
+    {
+        name: "Conservation Scientist",
+        icon: "🌳",
+        image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+        description: "อนุรักษ์ทรัพยากรธรรมชาติและสิ่งแวดล้อม"
+    },
+
+    {
+        name: "Agronomist",
+        icon: "🌾",
+        image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาวิธีการปลูกพืชและการจัดการดิน"
+    },
+
+    {
+        name: "Horticulturist",
+        icon: "🌺",
+        image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลและพัฒนาพืชสวนและภูมิทัศน์"
+    },
+
+    {
+        name: "Urban Farmer",
+        icon: "🥬",
+        image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=80",
+        description: "ทำเกษตรกรรมในพื้นที่เมือง"
+    },
+
+    {
+        name: "Real Estate Developer",
+        icon: "🏢",
+        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาโครงการอสังหาริมทรัพย์"
+    },
+
+    {
+        name: "Interior Decorator",
+        icon: "🪑",
+        image: "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=80",
+        description: "ตกแต่งพื้นที่ให้สวยงามและเหมาะกับการใช้งาน"
+    },
+
+    {
+        name: "Customer Service Specialist",
+        icon: "☎️",
+        image: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลและให้บริการลูกค้า"
+    },
+
+    {
+        name: "Executive Assistant",
+        icon: "💼",
+        image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+        description: "สนับสนุนการบริหารงานของผู้บริหาร"
+    },
+
+    {
+        name: "Office Administrator",
+        icon: "🗂️",
+        image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารจัดการงานสำนักงาน"
+    },
+
+    {
+        name: "Legal Consultant",
+        icon: "⚖️",
+        image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
+        description: "ให้คำปรึกษาด้านกฎหมายแก่บุคคลและองค์กร"
+    },
+
+    {
+        name: "Compliance Officer",
+        icon: "📋",
+        image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80",
+        description: "ดูแลให้องค์กรปฏิบัติตามกฎระเบียบและมาตรฐาน"
+    },
+
+    {
+        name: "Risk Manager",
+        icon: "⚠️",
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+        description: "วิเคราะห์และบริหารความเสี่ยงขององค์กร"
+    },
+
+    {
+        name: "Quality Assurance Specialist",
+        icon: "✅",
+        image: "https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&w=1200&q=80",
+        description: "ตรวจสอบและพัฒนาคุณภาพของสินค้าและบริการ"
+    },
+
+    {
+        name: "Manufacturing Engineer",
+        icon: "🏭",
+        image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาและปรับปรุงกระบวนการผลิต"
+    },
+
+    {
+        name: "Industrial Engineer",
+        icon: "🏭",
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+        description: "เพิ่มประสิทธิภาพของระบบการผลิตและการทำงาน"
+    },
+
+    {
+        name: "Automotive Engineer",
+        icon: "🚗",
+        image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบและพัฒนาเทคโนโลยียานยนต์"
+    },
+
+    {
+        name: "Electric Vehicle Engineer",
+        icon: "🔋",
+        image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาเทคโนโลยียานยนต์ไฟฟ้า"
+    },
+
+    {
+        name: "Game Artist",
+        icon: "🎮",
+        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80",
+        description: "สร้างงานศิลป์ ตัวละคร และฉากสำหรับเกม"
+    },
+
+    {
+        name: "Technical Writer",
+        icon: "📘",
+        image: "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80",
+        description: "เขียนคู่มือและเอกสารทางเทคนิค"
+    },
+
+    {
+        name: "Solutions Architect",
+        icon: "🏗️",
+        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+        description: "ออกแบบสถาปัตยกรรมระบบเทคโนโลยี"
+    },
+
+    {
+        name: "IT Consultant",
+        icon: "💻",
+        image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=80",
+        description: "ให้คำปรึกษาด้านเทคโนโลยีสารสนเทศ"
+    },
+
+    {
+        name: "IT Project Manager",
+        icon: "🖥️",
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
+        description: "บริหารโครงการด้านเทคโนโลยีสารสนเทศ"
+    },
+
+    {
+        name: "Technical Support Specialist",
+        icon: "🛠️",
+        image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80",
+        description: "ให้ความช่วยเหลือและแก้ไขปัญหาด้านเทคนิค"
+    },
+
+    {
+        name: "Research Analyst",
+        icon: "🔬",
+        image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80",
+        description: "ค้นคว้าและวิเคราะห์ข้อมูลเพื่อสนับสนุนการตัดสินใจ"
+    },
+
+    {
+        name: "Statistician",
+        icon: "📊",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+        description: "วิเคราะห์ข้อมูลด้วยหลักสถิติ"
+    },
+
+    {
+        name: "Mathematician",
+        icon: "➗",
+        image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
+        description: "ศึกษาและประยุกต์ใช้คณิตศาสตร์ในการแก้ปัญหา"
+    },
+
+    {
+        name: "Teacher Trainer",
+        icon: "👩‍🏫",
+        image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80",
+        description: "พัฒนาและฝึกอบรมครูและบุคลากรทางการศึกษา"
+    },
+
+    {
+        name: "Career Counselor",
+        icon: "🧭",
+        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+        description: "ให้คำปรึกษาและวางแผนเส้นทางอาชีพ"
+    },
+
+    {
+        name: "Education Consultant",
+        icon: "🎓",
+        image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
+        description: "ให้คำปรึกษาด้านการศึกษาและการพัฒนาผู้เรียน"
+    },
+
+    {
+        name: "Corporate Trainer",
+        icon: "📚",
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
+        description: "ฝึกอบรมและพัฒนาศักยภาพบุคลากรในองค์กร"
     }
 
 ];
 
 
+/* =====================================================
+   ตรวจจำนวนอาชีพ
+===================================================== */
 
-/* ==========================================
+console.log(
+    "จำนวนอาชีพทั้งหมด:",
+    careers.length
+);
+
+
+/* =====================================================
    RANDOM CAREER
-========================================== */
+===================================================== */
+
+let lastIndex = -1;
+
 
 function randomCareer() {
 
 
-    const randomIndex =
-        Math.floor(
-            Math.random() *
-            careers.length
-        );
+    let randomIndex;
+
+
+    /* ไม่ให้สุ่มอาชีพเดิมซ้ำทันที */
+
+    do {
+
+        randomIndex =
+            Math.floor(
+                Math.random() *
+                careers.length
+            );
+
+    }
+
+    while (
+        randomIndex === lastIndex &&
+        careers.length > 1
+    );
+
+
+    lastIndex =
+        randomIndex;
 
 
     const career =
@@ -763,34 +1940,54 @@ function randomCareer() {
 
         <div class="career-result">
 
-            <div class="career-icon">
+            <img
+                class="career-image"
+                src="${career.image}"
+                alt="${career.name}"
+                onerror="this.style.display='none';"
+            >
 
-                ${career.icon}
+
+            <div class="career-content">
+
+                <div class="career-icon">
+
+                    ${career.icon}
+
+                </div>
+
+
+                <div class="career-number">
+
+                    อาชีพที่ ${randomIndex + 1}
+                    จาก ${careers.length} อาชีพ
+
+                </div>
+
+
+                <div class="career-name">
+
+                    ${career.name}
+
+                </div>
+
+
+                <div class="career-description">
+
+                    ${career.description}
+
+                </div>
+
+
+                <button
+                    class="random-again"
+                    onclick="randomCareer()">
+
+                    🔄 สุ่มอาชีพใหม่
+
+                </button>
 
             </div>
-
-
-            <div class="career-name">
-
-                ${career.name}
-
-            </div>
-
-
-            <div class="career-description">
-
-                ${career.description}
-
-            </div>
-
-
-            <button
-                class="random-again"
-                onclick="randomCareer()">
-
-                🔄 สุ่มใหม่
-
-            </button>
 
         </div>
 
@@ -799,17 +1996,15 @@ function randomCareer() {
 }
 
 
-
-/* ==========================================
+/* =====================================================
    BACK
-========================================== */
+===================================================== */
 
 function goBack() {
 
     history.back();
 
 }
-
 
 </script>
 
